@@ -1,0 +1,15 @@
+sqlplus
+
+system
+1234
+
+alter session set "_ORACLE_SCRIPT"=true;
+create user nanodb identified by qwer;
+grant connect, resource, dba to nanodb;
+
+exit
+
+sqlplus
+
+nanodb
+qwer
