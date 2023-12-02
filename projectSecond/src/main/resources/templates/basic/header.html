@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<html mxlns:th="http://www.thymeleaf.org">
+  <head th:fragment="headerFragmentHead">
+    <link rel="stylesheet" href="/styles/header.css" />
+  </head>
+  <body>
+    <div th:fragment="headerFragment">
+      <div class="header-area">
+        <div
+          class="d-flex justify-content-between align-items-center px-2 container"
+        >
+          <div>
+            <a href="/"
+              ><img src="/images/header/left_logo.png" alt="대학로고"
+            /></a>
+          </div>
+          <div>
+            <img src="/images/header/three_bar.png" alt="메뉴" />
+            <img src="/images/header/right_logo.png" alt="연구실로고" />
+          </div>
+        </div>
+        <div class="header-menu d-flex justify-content-between px-5 container">
+          <div>
+            News
+            <div class="header-menu-hidden">News</div>
+          </div>
+          <div>
+            Professor
+            <div class="header-menu-hidden">Professor</div>
+          </div>
+          <div>
+            Members
+            <div>
+              <div class="header-menu-hidden">Current</div>
+              <div class="header-menu-hidden">Alumni</div>
+              <div class="header-menu-hidden">Future<br />prosepective</div>
+            </div>
+          </div>
+          <div>
+            Researches
+            <div>
+              <div class="header-menu-hidden">Group mission<br />statement</div>
+              <div class="header-menu-hidden">Research topics</div>
+              <div class="header-menu-hidden">Instruments</div>
+            </div>
+          </div>
+          <div>
+            Publications
+            <div>
+              <div class="header-menu-hidden">Journals</div>
+              <div class="header-menu-hidden">Patents</div>
+            </div>
+          </div>
+          <div>
+            Lectures
+            <div class="header-menu-hidden">Lectures</div>
+          </div>
+          <div>
+            Gallery
+            <div class="header-menu-hidden">Gallery</div>
+          </div>
+          <div>
+            Links
+            <div>
+              <div class="header-menu-hidden">Links</div>
+              <div class="header-menu-hidden">Collaborations</div>
+              <div class="header-menu-hidden">Funding<br />sources</div>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </div>
+  </body>
 </html>

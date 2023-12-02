@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+  <head th:fragment="footerFragmentHead">
+    <link rel="stylesheet" href="/styles/footer.css" />
+  </head>
+  <body>
+    <div th:fragment="footerFragment">
+      <hr />
+      <div class="d-flex align-items-center px-2 container">
+        <div>
+          <img src="/images/footer/left_logo.png" alt="" />
+        </div>
+        <div class="footer-text">
+          50 Yonsei-ro, Seodaemun-gu Seoul 03722, Republic of Korea <br />
+          Department of Chemistry, Yonsei University, Phone : +82-2-2123-2636
+          <br />
+          Copyright ©️ 2021, Soft and Hybrid Nanomaterials Lab at Yonsei, All
+          right Reserved.
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

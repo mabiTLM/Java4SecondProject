@@ -14,8 +14,16 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="/styles/index.css" />
     <head th:replace="~{/basic/header :: headerFragmentHead}"></head>
+    <head th:replace="~{/basic/footer :: footerFragmentHead}"></head>
     <head th:replace="~{${path} :: ${contentHead}}"></head>
   </head>
-  <body></body>
+  <body>
+    <div id="root">
+      <div id="header" th:replace="~{/basic/header :: headerFragment}"></div>
+      <div id="content" th:insert="~{${path} :: ${content}}"></div>
+      <div id="footer" th:replace="~{/basic/footer :: footerFragment}"></div>
+    </div>
+  </body>
 </html>

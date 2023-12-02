@@ -1,0 +1,21 @@
+.header-menu {
+  font-size: 19px;
+  text-align: left;
+  font-weight: bold;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: 28px;
+}
+
+.header-menu:hover {
+  transition: 0.3s ease-out;
+  height: 240px;
+}
+.header-menu:not(:hover) {
+  transition: 0.3s ease-out;
+}
+
+.header-menu-hidden {
+  font-weight: normal;
+  font-size: 15px;
+}
