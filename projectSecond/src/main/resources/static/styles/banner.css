@@ -1,0 +1,39 @@
+.banner-area {
+  color: white;
+  height: 290px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  --bs-gutter-x: 0px;
+}
+.banner-text-area {
+  height: 80%;
+  position: relative;
+  top: 70px;
+  left: 75px;
+}
+
+.banner-big-text {
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.banner-small-text {
+  font-size: 28px;
+  font-weight: 550;
+}
+
+.move-button-area {
+  position: relative;
+  width: 100%;
+  height: 20%;
+  color: black;
+  background: white;
+}
+.move-button-area-inner {
+  width: 100%;
+  height: 100%;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border: 1px solid;
+  display: flex;
+}

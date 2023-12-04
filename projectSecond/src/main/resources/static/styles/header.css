@@ -1,3 +1,13 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.header-area {
+  padding-top: 20px;
+  background-color: white;
+}
+
 .header-menu {
   font-size: 19px;
   text-align: left;
@@ -5,11 +15,12 @@
   flex-wrap: wrap;
   overflow: hidden;
   height: 28px;
+  margin-top: 20px;
 }
 
 .header-menu:hover {
   transition: 0.3s ease-out;
-  height: 240px;
+  height: 225px;
 }
 .header-menu:not(:hover) {
   transition: 0.3s ease-out;
@@ -17,5 +28,13 @@
 
 .header-menu-hidden {
   font-weight: normal;
-  font-size: 15px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.header-hr {
+  border: 1px solid #071a4c;
+  margin-bottom: 0;
+}
+.big-header-menu {
+  margin-bottom: 30px;
 }

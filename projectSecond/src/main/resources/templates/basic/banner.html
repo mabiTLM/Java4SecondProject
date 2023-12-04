@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head th:fragment="bannerFragmentHead">
+    <link rel="stylesheet" href="/styles/banner.css" />
+  </head>
+  <body>
+    <div
+      th:fragment="bannerFragment"
+      class="banner-area container"
+      style="background-image: url(/images/banner/news.jpg)"
+    >
+      <div class="banner-text-area">
+        <div class="banner-big-text" th:text="${banner}"></div>
+        <div class="banner-small-text">Soft and Hybrid Nanomaterials Lab</div>
+      </div>
+      <div class="move-button-area">
+        <div class="move-button-area-inner">
+          <div>News</div>
+          <div>News</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

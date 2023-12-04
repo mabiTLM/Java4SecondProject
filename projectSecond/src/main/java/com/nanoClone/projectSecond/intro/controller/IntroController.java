@@ -16,5 +16,4 @@ public class IntroController {
     model.addAttribute("contentHead", "introFragmentHead");
     return "/basic/layout";
   }
-
 }

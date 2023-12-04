@@ -5,3 +5,15 @@ body {
   margin: 0;
   padding: 0;
 }
+
+#blank-area {
+  margin-top: 175px;
+}
+
+.pageName {
+  padding-top: 50px;
+  padding-bottom: 43px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+}
