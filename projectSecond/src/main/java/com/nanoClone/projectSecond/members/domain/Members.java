@@ -1,4 +1,4 @@
-package com.nanoClone.projectSecond.members.dao;
+package com.nanoClone.projectSecond.members.domain;
 
 public class Members {
 

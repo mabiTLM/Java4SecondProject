@@ -7,16 +7,22 @@
     <div
       th:fragment="bannerFragment"
       class="banner-area container"
-      style="background-image: url(/images/banner/news.jpg)"
+      th:style="'background-image:url('+ @{'/images/banner/' + ${bannerBundle} + '.jpg'} +')'"
     >
       <div class="banner-text-area">
-        <div class="banner-big-text" th:text="${banner}"></div>
+        <div class="banner-big-text" th:text="${bannerBundle}"></div>
         <div class="banner-small-text">Soft and Hybrid Nanomaterials Lab</div>
       </div>
       <div class="move-button-area">
         <div class="move-button-area-inner">
-          <div>[[${bannerBundle}]]</div>
-          <div>[[${banner}]]</div>
+          <div class="banner-bundle-area">
+            [[${bannerBundle}]]
+            <img src="/images/banner/downIcon.png" alt="" />
+          </div>
+          <div class="banner-move-area">
+            [[${title}]]
+            <img src="/images/banner/downIcon.png" alt="" />
+          </div>
         </div>
       </div>
     </div>

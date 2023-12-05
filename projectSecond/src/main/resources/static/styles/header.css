@@ -31,6 +31,10 @@ a {
   font-size: 16px;
   margin-bottom: 15px;
 }
+.header-menu-hidden-text:hover {
+  border-bottom: 1px solid;
+}
+
 .header-hr {
   border: 1px solid #071a4c;
   margin-bottom: 0;

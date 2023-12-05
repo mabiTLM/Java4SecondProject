@@ -1,0 +1,50 @@
+<html mxlns:th="http://www.thymeleaf.org">
+  <head th:fragment="addNewsFragmentHead">
+    <link rel="stylesheet" href="/styles/news/add.css" />
+  </head>
+  <body>
+    <div th:fragment="addNewsFragment">
+      <form action="/news/add" method="post" class="container">
+        <select name="category" id="">
+          <option value="-">카테고리 선택</option>
+          <option value="Conference">Conference</option>
+          <option value="Group activity">Group activity</option>
+          <option value="News">News</option>
+          <option value="News clipping">News clipping</option>
+          <option value="New member">New member</option>
+          <option value="Paper accepted">Paper accepted</option>
+          <option value="Seminar">Seminar</option>
+        </select>
+
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="title"
+            id="floatingInput"
+            placeholder="제목"
+          />
+        </div>
+
+        <div class="form-floating mb-3">
+          <textarea
+            class="form-control"
+            name="content"
+            placeholder="글"
+            id="floatingTextarea"
+          ></textarea>
+        </div>
+
+        <button class="btn btn-primary">글올리기</button>
+      </form>
+      <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+      <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/translations/ko.js"></script>
+      <script>
+        ClassicEditor.create(document.getElementById("floatingTextarea"), {
+          language: "ko",
+          ckfinder: { uploadUrl: "/upload" },
+        });
+      </script>
+    </div>
+  </body>
+</html>

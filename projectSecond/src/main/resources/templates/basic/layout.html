@@ -32,7 +32,7 @@
           th:insert="~{/basic/banner :: bannerFragment}"
         ></div>
       </div>
-      <div th:utext="${banner}" class="pageName"></div>
+      <div th:if="${banner}!=null" th:utext="${banner}" class="pageName"></div>
       <div id="content" th:insert="~{${path} :: ${content}}"></div>
       <div id="footer" th:replace="~{/basic/footer :: footerFragment}"></div>
     </div>

@@ -1,15 +1,22 @@
-sqlplus
+use mysql
+create user nano;
+create user nano@localhost identified by '1234';
+create database nano_test;
+grant all privileges on nano_test.* to nano@localhost;
 
-system
-1234
+cmd
+mysql -u java -p
 
-alter session set "_ORACLE_SCRIPT"=true;
-create user nanodb identified by qwer;
-grant connect, resource, dba to nanodb;
 
-exit
 
-sqlplus
 
-nanodb
-qwer
+use nano_test;
+
+create table news_board (
+id int auto_increment primary key,
+category varchar(20) not null,
+title varchar(50) not null,
+content longtext not null,
+created_at timestamp default current_timestamp,
+views int default 0
+)

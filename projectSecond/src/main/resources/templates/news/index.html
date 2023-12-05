@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="newsFragmentHead"> </head>
+  <head th:fragment="newsFragmentHead">
+    <link rel="stylesheet" href="/styles/news/index.css" />
+  </head>
   <body>
-    <div th:fragment="newsFragment">
-      <div class=""></div>
-      <div></div>
+    <div th:fragment="newsFragment" class="container">
+      <form action="" class="news-search-bar">
+        <input type="text" />
+        <button>검색</button>
+      </form>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">번호</th>
+            <th scope="col">카테고리</th>
+            <th scope="col">제목</th>
+            <th scope="col">등록일</th>
+            <th scope="col">조회수</th>
+          </tr>
+        </thead>
+      </table>
+      <a href="/news/add">
+        <button>글쓰기</button>
+      </a>
     </div>
   </body>
 </html>
