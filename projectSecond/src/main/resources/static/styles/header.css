@@ -32,6 +32,7 @@ a {
   margin-bottom: 15px;
 }
 .header-menu-hidden-text:hover {
+  color: blue;
   border-bottom: 1px solid;
 }
 

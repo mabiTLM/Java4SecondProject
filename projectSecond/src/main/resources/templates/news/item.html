@@ -1,0 +1,38 @@
+<html mxlns:th="http://www.thymeleaf.org">
+  <head th:fragment="newsItemFragmentHead">
+    <link rel="stylesheet" href="/styles/news/item.css" />
+  </head>
+  <body>
+    <div
+      th:fragment="newsItemFragment"
+      th:object="${newsBoard}"
+      class="container"
+    >
+      <hr class="top-hr" />
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex">
+          <div th:text="*{category}"></div>
+          <div th:text="*{title}"></div>
+        </div>
+        <div class="d-flex">
+          <div th:text="*{createdAt}"></div>
+          <div>조회수:[[*{views}]]</div>
+        </div>
+      </div>
+      <hr />
+      <p th:utext="*{content}"></p>
+      <hr />
+      <div class="move-list-button-area">
+        <a href="/news">
+          <button class="move-list-button btn btn-primary btn-lg">목록</button>
+        </a>
+      </div>
+      <form action="/edit">
+        <button th:value="*{id}" name="currentPost">수정</button>
+      </form>
+      <form action="/delete" method="post">
+        <button th:value="*{id}" name="currentPost">삭제</button>
+      </form>
+    </div>
+  </body>
+</html>

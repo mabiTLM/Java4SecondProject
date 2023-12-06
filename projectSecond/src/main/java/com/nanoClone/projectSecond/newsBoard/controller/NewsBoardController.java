@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,14 +25,35 @@ public class NewsBoardController {
   @Autowired
   NewsBoardService newsBoardService;
 
+  int count = 10;
+
   @GetMapping("/news")
   public String newsPage(Model model, @RequestParam Map<String, String> data) {
+    int page = data.get("page") != null ? Integer.parseInt(data.get("page")) : 1;
     model.addAttribute("title", "News");
     model.addAttribute("path", "/news/index");
     model.addAttribute("content", "newsFragment");
     model.addAttribute("contentHead", "newsFragmentHead");
     model.addAttribute("bannerBundle", "News");
     model.addAttribute("banner", "News");
+    model.addAttribute("list", newsBoardService.getAll(page, count));
+    model.addAttribute("pageCount", newsBoardService.getPageCount(count));
+    return "/basic/layout";
+  }
+
+  @GetMapping("/news/{newsBoardId}")
+  public String itemPage(Model model, @PathVariable("newsBoardId") int boardId) {
+    newsBoardService.upViews(boardId);
+    NewsBoard newsboard = newsBoardService.get(boardId);
+    model.addAttribute("title", "News");
+    model.addAttribute("bannerBundle", "News");
+    model.addAttribute("banner", "News");
+    model.addAttribute("path", "/news/item");
+    model.addAttribute("content", "newsItemFragment");
+    model.addAttribute("contentHead", "newsItemFragmentHead");
+    newsboard.setContent(newsboard.getContent().replace("\n", "<br />"));
+    model.addAttribute("newsBoard", newsboard);
+
     return "/basic/layout";
   }
 

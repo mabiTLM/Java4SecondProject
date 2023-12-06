@@ -37,4 +37,12 @@ public class NewsBoardDAO {
         count);
   }
 
+  public NewsBoard get(int id) {
+    return jdbcTemplate.queryForObject("select * from news_board where id = ?", mapper, id);
+  }
+
+  public void upViews(int id) {
+    jdbcTemplate.update("update news_board set views = views+1 where id = ?", id);
+  }
+
 }
