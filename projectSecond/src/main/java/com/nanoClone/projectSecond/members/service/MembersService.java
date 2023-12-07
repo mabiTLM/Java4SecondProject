@@ -1,6 +1,7 @@
 package com.nanoClone.projectSecond.members.service;
 
 import java.security.MessageDigest;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.nanoClone.projectSecond.members.dao.MembersDAO;
@@ -13,6 +14,14 @@ public class MembersService {
 
   public Members get(int id) {
     return membersDAO.get(id);
+  }
+
+  public List<Members> getAll(int page, int count) {
+    return membersDAO.getAll((page - 1) * count, count);
+  }
+
+  public int getPageCount(int count) {
+    return (membersDAO.getCount() - 1) / count + 1;
   }
 
   public void add(Members members) {

@@ -2,6 +2,7 @@ package com.nanoClone.projectSecond.members.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -20,7 +21,7 @@ public class MembersDAO {
       return new Members(rs.getInt("id"), rs.getString("email"), rs.getString("user_id"),
           rs.getString("password"), rs.getString("category"), rs.getString("english_name"),
           rs.getString("name"), rs.getString("position"), rs.getString("info"),
-          rs.getString("image"));
+          rs.getString("image"), rs.getInt("is_manager"));
     }
   };
 
@@ -37,5 +38,14 @@ public class MembersDAO {
 
   public Members get(String userId) {
     return jdbcTemplate.queryForObject("select * from members where user_id = ?", mapper, userId);
+  }
+
+  public List<Members> getAll(int idx, int count) {
+    return jdbcTemplate.query("select * from members order by id desc limit ?, ?", mapper, idx,
+        count);
+  }
+
+  public int getCount() {
+    return jdbcTemplate.queryForObject("select count(*) from members", Integer.class);
   }
 }

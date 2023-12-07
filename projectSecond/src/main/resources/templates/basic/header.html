@@ -14,6 +14,14 @@
           /></a>
         </div>
         <div>
+          <div th:if="${session.isLogin != null}">
+            <a href="/manager" th:if="${session.isLogin.isManager == 1}">
+              <button>관리페이지</button>
+            </a>
+            <a href="/logout">
+              <button>로그아웃</button>
+            </a>
+          </div>
           <img src="/images/header/three_bar.png" alt="메뉴" />
           <img src="/images/header/right_logo.png" alt="연구실로고" />
         </div>

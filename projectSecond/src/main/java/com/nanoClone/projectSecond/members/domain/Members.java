@@ -24,6 +24,7 @@ public class Members {
   private String position;
   private String info;
   private String image;
+  private int isManager;
 
 
 
