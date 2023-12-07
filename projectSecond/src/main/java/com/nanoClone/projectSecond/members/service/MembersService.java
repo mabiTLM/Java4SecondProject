@@ -20,6 +20,14 @@ public class MembersService {
     return membersDAO.getAll((page - 1) * count, count);
   }
 
+  public Members getLastProfessor() {
+    return membersDAO.getLastProfessor();
+  }
+
+  public List<Members> getAllProfessor() {
+    return membersDAO.getAllProfessor();
+  }
+
   public int getPageCount(int count) {
     return (membersDAO.getCount() - 1) / count + 1;
   }
@@ -56,5 +64,9 @@ public class MembersService {
       e.printStackTrace();
       return null;
     }
+  }
+
+  public void update(Members members) {
+    membersDAO.update(members);
   }
 }

@@ -19,7 +19,7 @@ title varchar(50) not null,
 content longtext not null,
 created_at timestamp default current_timestamp,
 views int default 0
-)
+);
 
 create table members(
 id int auto_increment primary key,
@@ -32,5 +32,33 @@ name varchar(20),
 position varchar(20),
 info varchar(300),
 image longtext,
-is_manager tinyint
+is_manager tinyint,
+chinese_name varchar(20),
+address varchar(200),
+phone varchar(15),
+site varchar(100),
+link longtext
+);
+
+create table careers(
+id int auto_increment primary key,
+university int,
+member_id int,
+content varchar(200),
+start date,
+end date
+);
+
+create table honors_and_awards(
+id int auto_increment primary key,
+user_id int,
+title varchar(300) not null,
+award_date date,
+contents varchar(300)
+);
+
+
+create table university(
+id int auto_increment primary key,
+content varchar(300) not null unique
 )

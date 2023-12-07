@@ -84,7 +84,8 @@
         </div>
         <div class="right-area">
           <div th:if="${choiceMember!=null}">
-            <form action="">
+            <form action="/manager" method="post">
+              <input type="hidden" name="id" th:value="${choiceMember.id}" />
               <select name="category" id="">
                 <option th:value="${choiceMember.category}">
                   현재 카테고리 : [[${choiceMember.category}]]
@@ -103,6 +104,14 @@
                   Alumni Undergraduates / Visiting students
                 </option>
               </select>
+              <div>
+                아이디 :
+                <input
+                  type="text"
+                  name="userId"
+                  th:value="${choiceMember.userId}"
+                />
+              </div>
               <div>
                 영어 이름 :
                 <input
@@ -129,11 +138,9 @@
               </div>
               <div>
                 대표작 :
-                <input
-                  type="text"
-                  name="info"
-                  th:value="${choiceMember.info}"
-                />
+                <div>
+                  <textarea name="info">[[${choiceMember.info}]]</textarea>
+                </div>
               </div>
               <div>
                 이메일 :
@@ -144,11 +151,72 @@
                 />
               </div>
               <div>
+                관리자 권한 :
+                <input
+                  type="radio"
+                  name="isManager"
+                  value="1"
+                  th:if="${choiceMember.isManager}==1"
+                  checked
+                />
+                <input
+                  type="radio"
+                  name="isManager"
+                  value="1"
+                  th:if="${choiceMember.isManager}!=1"
+                />부여
+                <input
+                  type="radio"
+                  name="isManager"
+                  value="0"
+                  th:if="${choiceMember.isManager}==0"
+                  checked
+                />
+                <input
+                  type="radio"
+                  name="isManager"
+                  value="0"
+                  th:if="${choiceMember.isManager}!=0"
+                />제거
+              </div>
+              <div>
                 교수님 작성 구역
                 <div>
-                  <input type="text" name="chineseName" />
+                  한자이름 :<input
+                    type="text"
+                    name="chineseName"
+                    th:value="${choiceMember.chineseName}"
+                  />
+                </div>
+                <div>
+                  주소 :<input
+                    type="text"
+                    name="address"
+                    th:value="${choiceMember.address}"
+                  />
+                </div>
+                <div>
+                  전화번호 :<input
+                    type="text"
+                    name="phone"
+                    th:value="${choiceMember.phone}"
+                  />
+                </div>
+                <div>
+                  사이트 :<input
+                    type="text"
+                    name="site"
+                    th:value="${choiceMember.site}"
+                  />
+                  <input
+                    type="text"
+                    name="link"
+                    th:value="${choiceMember.link}"
+                    placeholder="url"
+                  />
                 </div>
               </div>
+              <button>수정</button>
             </form>
           </div>
         </div>

@@ -1,3 +1,67 @@
 .sub-title {
   font-weight: bold;
 }
+.professor-choice {
+  border: 1px solid;
+}
+
+.professor-info-area {
+  font-weight: 400;
+  box-sizing: border-box;
+  margin-bottom: 35px;
+  padding: 40px 55px 30px;
+  border-radius: 15px;
+  background: #e4e7ea url("/images/professor/professor_background.png")
+    no-repeat right 0px;
+}
+.professor-info-area-inner {
+  margin-left: 30px;
+}
+
+.name-area {
+  font-size: 24px;
+  color: #003777;
+  margin-bottom: 25px;
+}
+.info-area {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 25px;
+}
+.address-area {
+  margin-bottom: 30px;
+  padding-left: 33px;
+  background: url("/images/professor/address_icon.png") no-repeat 0 5px;
+  font-size: 18px;
+  color: #333;
+}
+
+.email-area {
+  display: inline-block;
+  padding-left: 33px;
+  font-size: 18px;
+  color: #333;
+  padding-right: 70px;
+  background: url("/images/professor/email_icon.png") no-repeat left center;
+}
+.phone-area {
+  display: inline-block;
+  padding-left: 33px;
+  font-size: 18px;
+  color: #333;
+  padding-right: 70px;
+  background: url("/images/professor/phone_icon.png") no-repeat left center;
+}
+.site-area {
+  display: inline-block;
+  padding-left: 33px;
+  font-size: 18px;
+  color: #333;
+  background: url("/images/professor/site_icon.png") no-repeat left center;
+}
+.sub-title {
+  padding-bottom: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #003777;
+}

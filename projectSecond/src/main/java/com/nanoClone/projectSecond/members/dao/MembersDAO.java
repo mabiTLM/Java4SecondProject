@@ -21,7 +21,9 @@ public class MembersDAO {
       return new Members(rs.getInt("id"), rs.getString("email"), rs.getString("user_id"),
           rs.getString("password"), rs.getString("category"), rs.getString("english_name"),
           rs.getString("name"), rs.getString("position"), rs.getString("info"),
-          rs.getString("image"), rs.getInt("is_manager"));
+          rs.getString("image"), rs.getInt("is_manager"), rs.getString("chinese_name"),
+          rs.getString("address"), rs.getString("phone"), rs.getString("site"),
+          rs.getString("link"));
     }
   };
 
@@ -45,7 +47,26 @@ public class MembersDAO {
         count);
   }
 
+  public Members getLastProfessor() {
+    return jdbcTemplate.queryForObject(
+        "select * from members where category = 'professor' order by id limit 0, 1", mapper);
+  }
+
+  public List<Members> getAllProfessor() {
+    return jdbcTemplate.query("select * from members where category='professor' order by id",
+        mapper);
+  }
+
   public int getCount() {
     return jdbcTemplate.queryForObject("select count(*) from members", Integer.class);
+  }
+
+  public void update(Members members) {
+    jdbcTemplate.update(
+        "update members set email = ?, user_id = ?, password = ?, category = ?, name = ?, english_name = ?, position = ?, info = ?, image = ?, is_manager = ?, chinese_name = ?, address = ?, phone = ?, site = ?, link = ? where id = ?",
+        members.getEmail(), members.getUserId(), members.getPassword(), members.getCategory(),
+        members.getName(), members.getEnglishName(), members.getPosition(), members.getInfo(),
+        members.getImage(), members.getIsManager(), members.getChineseName(), members.getAddress(),
+        members.getPhone(), members.getSite(), members.getLink(), members.getId());
   }
 }

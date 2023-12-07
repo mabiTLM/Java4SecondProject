@@ -25,7 +25,9 @@ public class Members {
   private String info;
   private String image;
   private int isManager;
-
-
-
+  private String chineseName;
+  private String address;
+  private String phone;
+  private String site;
+  private String link;
 }

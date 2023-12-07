@@ -5,31 +5,63 @@
   </head>
   <body>
     <div th:fragment="professorFragment" class="container">
-      <div class="professor-info-area">
-        <div>Byeong-Su Kim/김병수/金兵洙</div>
-        <div>
-          Professor (2021.3 ~) <br />
-          Department of Chemistry, College of Science, Yonsei University
-        </div>
-        <div>
-          Science Hall (rm442), 50 Yonsei-ro, Department of Chemistry, Yonsei
-          University, <br />
-          Seoul 03722, Republic of Korea
-        </div>
-        <div class="d-flex justify-content-between">
-          <div>bskim19@yonsei.ac.kr</div>
-          <div>(02)2123-2636</div>
-          <div>Google Scholar</div>
+      <div class="d-flex justify-content-center">
+        <div
+          th:each="item:${professorList}"
+          th:object="${item}"
+          class="professor-choice"
+        >
+          [[*{name}]]
         </div>
       </div>
-      <div class="sub-title">
-        Education and Professional Career
-        <div></div>
+
+      <div class="professor-info-area d-flex">
+        <div><img src="/images/professor/img_professor.jpg" alt="" /></div>
+        <div class="professor-info-area-inner">
+          <div class="name-area">
+            <span th:text="${choice.englishName}"></span>
+            <span th:if="${choice.name}!=null">/ [[${choice.name}]]</span>
+            <span th:if="${choice.chineseName}!=null"
+              >/ [[${choice.chineseName}]]</span
+            >
+          </div>
+          <div class="info-area" th:utext="${choice.info}">
+            Professor (2021.3 ~) Department of Chemistry, College of Science,
+            Yonsei University
+          </div>
+          <div class="address-area" th:utext="${choice.address}">
+            Science Hall (rm442), 50 Yonsei-ro, Department of Chemistry, Yonsei
+            University, Seoul 03722, Republic of Korea
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="email-area">bskim19@yonsei.ac.kr</div>
+            <div class="phone-area">(02)2123-2636</div>
+            <div class="site-area">Google Scholar</div>
+          </div>
+        </div>
       </div>
-      <div class="sub-title">
-        Honors And Awards
-        <div></div>
-      </div>
+      <div class="sub-title">Education and Professional Career</div>
+      <form action="/careerAdd">
+        <input type="hidden" name="memberId" th:value="${choice.id}" />
+        <input name="title" type="text" placeholder="제목" />
+        <select name="university" id="">
+          <option
+            th:each="item:${universityList}"
+            th:object="${item}"
+            th:value="*{id}"
+          >
+            [[*{content}]]
+          </option>
+        </select>
+        시작일 : <input type="month" name="start" /> 종료일 :
+        <input type="month" name="end" />
+        <div>협력 : <input type="text" name="content" /></div>
+        <button>추가</button>
+      </form>
+      <div></div>
+
+      <div class="sub-title">Honors And Awards</div>
+      <div></div>
     </div>
   </body>
 </html>
