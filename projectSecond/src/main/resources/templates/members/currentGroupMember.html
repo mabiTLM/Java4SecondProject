@@ -1,7 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="currentGroupMemberFragmentHead"> </head>
+  <head th:fragment="currentGroupMemberFragmentHead">
+    <link rel="stylesheet" href="/styles/members/current.css" />
+  </head>
   <body>
-    <div th:fragment="currentGroupMemberFragment" class="container"></div>
+    <div th:fragment="currentGroupMemberFragment" class="container">
+      <div>
+        <div class="sub-title-area">Graduate Students</div>
+        <div>
+          <div
+            th:each="item:${graduateList}"
+            th:object="${item}"
+            class="graduate-area"
+          >
+            <div class="d-flex">
+              <div>이미지</div>
+              <div>
+                <div th:text="*{englishName}"></div>
+                <div th:text="*{name}"></div>
+                <div th:text="*{position}"></div>
+              </div>
+            </div>
+            <div th:text="*{info}"></div>
+            <div th:text="*{email}"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sub-title-area">Researchers</div>
+      <div class="sub-title-area">Undergraduate Students</div>
+      <div class="sub-title-area">Visiting Students</div>
+      <div class="sub-title-area">Administrative Staff</div>
+    </div>
   </body>
 </html>

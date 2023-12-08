@@ -4,18 +4,18 @@
     <link rel="stylesheet" href="/styles/professor/index.css" />
   </head>
   <body>
-    <div th:fragment="professorFragment" class="container">
+    <div th:fragment="professorFragment">
       <div class="d-flex justify-content-center">
         <div
           th:each="item:${professorList}"
           th:object="${item}"
           class="professor-choice"
         >
-          [[*{name}]]
+          [[*{name}]] 교수님
         </div>
       </div>
 
-      <div class="professor-info-area d-flex">
+      <div class="professor-info-area d-flex container">
         <div><img src="/images/professor/img_professor.jpg" alt="" /></div>
         <div class="professor-info-area-inner">
           <div class="name-area">
@@ -34,34 +34,94 @@
             University, Seoul 03722, Republic of Korea
           </div>
           <div class="d-flex justify-content-between">
-            <div class="email-area">bskim19@yonsei.ac.kr</div>
-            <div class="phone-area">(02)2123-2636</div>
-            <div class="site-area">Google Scholar</div>
+            <div class="email-area" th:text="${choice.email}">
+              bskim19@yonsei.ac.kr
+            </div>
+            <div class="phone-area" th:text="${choice.phone}">
+              (02)2123-2636
+            </div>
+            <div class="site-area">
+              <a th:href="${choice.link}"> [[${choice.site}]] </a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="sub-title">Education and Professional Career</div>
-      <form action="/careerAdd">
-        <input type="hidden" name="memberId" th:value="${choice.id}" />
-        <input name="title" type="text" placeholder="제목" />
-        <select name="university" id="">
-          <option
-            th:each="item:${universityList}"
+      <div class="container">
+        <div class="sub-title">Education and Professional Career</div>
+        <form
+          th:if="${session.isManager} != null"
+          action="/careerAdd"
+          method="post"
+        >
+          <input type="hidden" name="memberId" th:value="${choice.id}" />
+          <input name="title" type="text" placeholder="제목" />
+          <select name="university" id="">
+            <option
+              th:each="item:${universityList}"
+              th:object="${item}"
+              th:value="*{id}"
+            >
+              [[*{content}]]
+            </option>
+          </select>
+          <div>
+            시작일 : <input type="month" name="start" /> 종료일 :
+            <input type="month" name="end" />
+          </div>
+          <div>협력 : <input type="text" name="content" /></div>
+          <button>추가</button>
+        </form>
+        <div>
+          <div
+            th:each="item:${careerList}"
             th:object="${item}"
-            th:value="*{id}"
+            class="career-area"
           >
-            [[*{content}]]
-          </option>
-        </select>
-        시작일 : <input type="month" name="start" /> 종료일 :
-        <input type="month" name="end" />
-        <div>협력 : <input type="text" name="content" /></div>
-        <button>추가</button>
-      </form>
-      <div></div>
-
-      <div class="sub-title">Honors And Awards</div>
-      <div></div>
+            <div class="title-area">
+              [[*{title}]] (
+              <span th:if="*{start}!=null"
+                >[[*{start.getYear()}+1900]].[[*{start.getMonth()}+1]] ~</span
+              >
+              <span th:if="*{end}!=null"
+                >[[*{end.getYear()}+1900]].[[*{end.getMonth()}+1]]</span
+              >
+              )
+            </div>
+            <div class="content-area">
+              [[*{universityName}]]
+              <span th:if="*{content}!=''">,[[*{content}]]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gray-background">
+        <div class="container">
+          <div class="sub-title">Honors And Awards</div>
+          <form
+            th:if="${session.isManager} != null"
+            action="/honorsAndAwardsAdd"
+            method="post"
+          >
+            <input type="hidden" name="memberId" th:value="${choice.id}" />
+            <input name="title" type="text" placeholder="제목" />
+            <div>수상년도 : <input type="date" name="awardDate" /></div>
+            <div>상세 : <input type="text" name="content" /></div>
+            <button>추가</button>
+          </form>
+          <div>
+            <div
+              th:each="item:${awardList}"
+              th:object="${item}"
+              class="award-area"
+            >
+              <div class="award-title-area">
+                <span>[[*{awardDate.getYear}+1900]]</span> [[*{title}]]
+              </div>
+              <div class="award-content-area">- [[*{contents}]]</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

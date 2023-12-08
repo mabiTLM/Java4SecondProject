@@ -9,30 +9,62 @@
       class="container"
     >
       <hr class="top-hr" />
-      <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-between align-items-center title-head">
         <div class="d-flex">
-          <div th:text="*{category}"></div>
-          <div th:text="*{title}"></div>
+          <div class="category-area" th:text="*{category}"></div>
+          <div class="title-area" th:text="*{title}"></div>
         </div>
-        <div class="d-flex">
-          <div th:text="*{createdAt}"></div>
-          <div>조회수:[[*{views}]]</div>
+        <div class="d-flex title-right-area">
+          <div th:text="*{createdAt}" class="created-area"></div>
+          |
+          <div th:text="*{views}" class="view-area"></div>
         </div>
       </div>
       <hr />
       <p th:utext="*{content}"></p>
       <hr />
-      <div class="move-list-button-area">
+      <div class="d-flex justify-content-end">
+        <form action="/news/edit" th:if="${session.isManager == 1}">
+          <button
+            th:value="*{id}"
+            name="currentPost"
+            class="move-list-button btn btn-primary btn-lg"
+          >
+            수정
+          </button>
+        </form>
+        <form
+          action="/news/delete"
+          method="post"
+          th:if="${session.isManager == 1}"
+        >
+          <button
+            th:value="*{id}"
+            name="currentPost"
+            class="move-list-button btn btn-primary btn-lg"
+          >
+            삭제
+          </button>
+        </form>
         <a href="/news">
           <button class="move-list-button btn btn-primary btn-lg">목록</button>
         </a>
       </div>
-      <form action="/edit">
-        <button th:value="*{id}" name="currentPost">수정</button>
-      </form>
-      <form action="/delete" method="post">
-        <button th:value="*{id}" name="currentPost">삭제</button>
-      </form>
+      <hr />
+      <div th:if="${previousItem}!=null">
+        <a th:href="@{/news/{id}(id=${previousItem.id})}">
+          <span>이전글</span>
+          [[${previousItem.title}]]
+        </a>
+        <hr />
+      </div>
+      <div th:if="${nextItem}!=null">
+        <a th:href="@{/news/{id}(id=${nextItem.id})}">
+          <span>다음글</span>
+          [[${nextItem.title}]]
+        </a>
+        <hr />
+      </div>
     </div>
   </body>
 </html>

@@ -20,6 +20,10 @@ public class MembersService {
     return membersDAO.getAll((page - 1) * count, count);
   }
 
+  public List<Members> getAll(String category) {
+    return membersDAO.getAll(category);
+  }
+
   public Members getLastProfessor() {
     return membersDAO.getLastProfessor();
   }

@@ -22,7 +22,7 @@
         <tbody>
           <tr th:each="item:${list}" th:object="${item}">
             <th scope="row" th:text="*{id}"></th>
-            <td th:text="*{category}"></td>
+            <td class="category-area" th:text="*{category}"></td>
             <td class="table-title">
               <a th:href="@{/news/{id}(id=*{id})}" th:text="*{title}"></a>
             </td>

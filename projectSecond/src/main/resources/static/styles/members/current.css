@@ -1,0 +1,16 @@
+.sub-title-area {
+  padding-bottom: 25px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #003777;
+}
+.graduate-area {
+  width: 45%;
+  display: inline-table;
+  min-height: 349px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 25px 25px 20px;
+  border: 1px solid #bcc2c9;
+  border-radius: 9px;
+}

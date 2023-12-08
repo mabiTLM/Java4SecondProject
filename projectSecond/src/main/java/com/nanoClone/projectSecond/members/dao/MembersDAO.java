@@ -47,6 +47,11 @@ public class MembersDAO {
         count);
   }
 
+  public List<Members> getAll(String category) {
+    return jdbcTemplate.query("select * from members where category = ? order by id", mapper,
+        category);
+  }
+
   public Members getLastProfessor() {
     return jdbcTemplate.queryForObject(
         "select * from members where category = 'professor' order by id limit 0, 1", mapper);

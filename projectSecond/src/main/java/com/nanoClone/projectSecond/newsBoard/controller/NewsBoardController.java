@@ -54,6 +54,18 @@ public class NewsBoardController {
     newsboard.setContent(newsboard.getContent().replace("\n", "<br />"));
     model.addAttribute("newsBoard", newsboard);
 
+    try {
+      NewsBoard previousBoard = newsBoardService.get(boardId - 1);
+      model.addAttribute("previousItem", previousBoard);
+    } catch (Exception e) {
+      System.out.println("최초글");
+    }
+    try {
+      NewsBoard nextBoard = newsBoardService.get(boardId + 1);
+      model.addAttribute("nextItem", nextBoard);
+    } catch (Exception e) {
+      System.out.println("마지막글");
+    }
     return "/basic/layout";
   }
 
@@ -79,7 +91,46 @@ public class NewsBoardController {
       redirectAttributes.addFlashAttribute("requestError", "게시글을 정확히 입력해주세요");
       e.printStackTrace();
     }
-    return "redirect:/";
+    return "redirect:/news";
+  }
+
+  @GetMapping("/news/edit")
+  public String newsEditPage(Model model, @RequestParam Map<String, String> data) {
+    model.addAttribute("title", "News");
+    model.addAttribute("path", "/news/editNews");
+    model.addAttribute("content", "editNewsFragment");
+    model.addAttribute("contentHead", "editNewsFragmentHead");
+    model.addAttribute("editPost", newsBoardService.get(Integer.parseInt(data.get("currentPost"))));
+    return "/basic/layout";
+  }
+
+  @PostMapping("/news/edit")
+  public String editPost(@RequestParam Map<String, String> data, HttpSession session,
+      RedirectAttributes redirectAttributes) {
+    try {
+      String tempContent = data.get("content");
+      tempContent = tempContent.replaceAll("width=\"[0-9]*\"", "width=\"100%\"");
+      tempContent = tempContent.replaceAll("height=\"[0-9]*\"", "height=\"auto\"");
+      NewsBoard editBoard = new NewsBoard(data.get("category"), data.get("title"), tempContent);
+      editBoard.setId(Integer.valueOf(data.get("id")));
+      newsBoardService.edit(editBoard);
+
+    } catch (Exception e) {
+      redirectAttributes.addFlashAttribute("requestError", "게시글을 정확히 입력해주세요");
+      e.printStackTrace();
+    }
+    return "redirect:/news";
+  }
+
+  @PostMapping("/news/delete")
+  public String delete(@RequestParam Map<String, String> data, HttpSession session,
+      RedirectAttributes redirectAttributes) {
+    try {
+      newsBoardService.delete(Integer.parseInt(data.get("currentPost")));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return "redirect:/news";
   }
 
   @PostMapping("/upload")

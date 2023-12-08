@@ -26,6 +26,11 @@ public class MembersController {
     model.addAttribute("contentHead", "currentGroupMemberFragmentHead");
     model.addAttribute("bannerBundle", "Members");
     model.addAttribute("banner", "Current group members");
+    model.addAttribute("graduateList", membersService.getAll("graduate"));
+    model.addAttribute("researchersList", membersService.getAll("researchers"));
+    model.addAttribute("undergraduateList", membersService.getAll("undergraduate"));
+    model.addAttribute("visitingList", membersService.getAll("visiting"));
+    model.addAttribute("administrativeList", membersService.getAll("administrative"));
     return "/basic/layout";
   }
 
@@ -93,6 +98,7 @@ public class MembersController {
   @GetMapping("/logout")
   public String logout(@RequestParam Map<String, String> data, HttpSession session) {
     session.setAttribute("isLogin", null);
+    session.setAttribute("isManager", null);
     return "redirect:/";
   }
 

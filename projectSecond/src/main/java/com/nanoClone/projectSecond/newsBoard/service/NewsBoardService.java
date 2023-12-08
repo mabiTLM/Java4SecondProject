@@ -30,4 +30,12 @@ public class NewsBoardService {
   public void upViews(int id) {
     newsBoardDAO.upViews(id);
   }
+
+  public void delete(int id) {
+    newsBoardDAO.delete(id);
+  }
+
+  public void edit(NewsBoard newsBoard) {
+    newsBoardDAO.edit(newsBoard);
+  }
 }

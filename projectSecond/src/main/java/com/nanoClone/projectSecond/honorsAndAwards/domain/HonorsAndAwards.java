@@ -1,4 +1,4 @@
-package com.nanoClone.projectSecond.newsBoard.domain;
+package com.nanoClone.projectSecond.honorsAndAwards.domain;
 
 import java.sql.Date;
 import lombok.AllArgsConstructor;
@@ -11,14 +11,13 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class NewsBoard {
+public class HonorsAndAwards {
   private int id;
   @NonNull
-  private String category;
+  private int memberId;
   @NonNull
   private String title;
   @NonNull
-  private String content;
-  private Date createdAt;
-  private int views;
+  private Date awardDate;
+  private String contents;
 }

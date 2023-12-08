@@ -19,13 +19,18 @@ public class NewsBoardDAO {
     @Override
     public NewsBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
       return new NewsBoard(rs.getInt("id"), rs.getString("category"), rs.getString("title"),
-          rs.getString("content"), rs.getTimestamp("created_at"), rs.getInt("views"));
+          rs.getString("content"), rs.getDate("created_at"), rs.getInt("views"));
     }
   };
 
   public void add(NewsBoard newsBoard) {
     jdbcTemplate.update("insert into news_board (category, title, content) values (?,?,?)",
         newsBoard.getCategory(), newsBoard.getTitle(), newsBoard.getContent());
+  }
+
+  public void edit(NewsBoard newsBoard) {
+    jdbcTemplate.update("update news_board set category=?, title=?, content=? where id = ?",
+        newsBoard.getCategory(), newsBoard.getTitle(), newsBoard.getContent(), newsBoard.getId());
   }
 
   public int getCount() {
@@ -43,6 +48,10 @@ public class NewsBoardDAO {
 
   public void upViews(int id) {
     jdbcTemplate.update("update news_board set views = views+1 where id = ?", id);
+  }
+
+  public void delete(int id) {
+    jdbcTemplate.update("delete from news_board where id = ?", id);
   }
 
 }

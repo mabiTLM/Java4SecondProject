@@ -1,10 +1,32 @@
-.move-list-button-area {
-  text-align: center;
-}
-.move-list-button {
-}
-
 .top-hr {
   opacity: 1;
   border: solid 1px black;
+}
+
+.title-head {
+  font-size: 18px;
+}
+
+.category-area {
+  padding-left: 20px;
+  margin-right: 15px;
+  color: #003777;
+  font-weight: bold;
+}
+.title-area {
+  font-weight: 700;
+  color: #333;
+}
+.title-right-area {
+  color: #9a9a9a;
+}
+.created-area {
+  margin-right: 10px;
+}
+.view-area {
+  margin-left: 10px;
+}
+
+.move-list-button {
+  margin: 0px 10px;
 }

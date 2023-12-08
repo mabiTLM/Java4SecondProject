@@ -65,3 +65,49 @@
   font-weight: 700;
   color: #003777;
 }
+
+.career-area {
+  margin-bottom: 30px;
+  padding-left: 23px;
+  border-left: solid indigo;
+}
+
+.title-area {
+  line-height: 1;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+
+.content-area {
+  font-size: 18px;
+  color: #999;
+}
+
+.gray-background {
+  padding: 40px 0 45px;
+  background: #e7e9eb;
+}
+
+.award-area {
+  box-sizing: border-box;
+  height: 104px;
+  margin-bottom: 15px;
+  background: url("/images/professor/award_background.png") no-repeat 0 0 / 100%
+    100%;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.award-title-area {
+  margin-left: 30px;
+  padding-top: 30px;
+  color: #333;
+  font-weight: bold;
+}
+
+.award-content-area {
+  margin-left: 73px;
+  padding-top: 10px;
+  color: #999;
+}
