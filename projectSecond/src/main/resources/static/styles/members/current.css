@@ -14,3 +14,34 @@
   border: 1px solid #bcc2c9;
   border-radius: 9px;
 }
+.english-name-area {
+  font-size: 18px;
+  color: #999;
+  font-weight: 700;
+}
+.name-area {
+  font-size: 24px;
+  font-weight: 700;
+}
+.position-area {
+  font-size: 18px;
+  font-weight: 700;
+  color: #999;
+}
+.info-area {
+  padding-top: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+
+.email-area {
+  color: #003777;
+  font-size: 16px;
+}
+
+.career-area {
+  padding-top: 20px;
+  font-size: 16px;
+  font-weight: 400;
+}

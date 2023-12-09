@@ -1,7 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="alumniFragmentHead"> </head>
+  <head th:fragment="alumniFragmentHead">
+    <link rel="stylesheet" href="/styles/members/alumni.css" />
+  </head>
   <body>
-    <div th:fragment="alumniFragment" class="container"></div>
+    <div th:fragment="alumniFragment" class="container">
+      <div class="d-flex justify-content-between sub-title-area">
+        <a
+          th:href="@{/alumni(page=1)}"
+          th:if="${page}==1"
+          class="ph-area click-on"
+        >
+          <div>Ph.D.</div>
+        </a>
+        <a th:href="@{/alumni(page=1)}" th:if="${page}!=1" class="ph-area">
+          <div>Ph.D.</div>
+        </a>
+
+        <a
+          th:href="@{/alumni(page=2)}"
+          th:if="${page}==2"
+          class="ms-area click-on"
+        >
+          <div>M.S.</div>
+        </a>
+        <a th:href="@{/alumni(page=2)}" th:if="${page}!=2" class="ms-area">
+          <div>M.S.</div>
+        </a>
+
+        <a
+          th:href="@{/alumni(page=3)}"
+          th:if="${page}==3"
+          class="research-area click-on"
+        >
+          <div>Researchers</div>
+        </a>
+        <a
+          th:href="@{/alumni(page=3)}"
+          th:if="${page}!=3"
+          class="research-area"
+        >
+          <div>Researchers</div>
+        </a>
+
+        <a
+          th:href="@{/alumni(page=4)}"
+          th:if="${page}==4"
+          class="visit-area click-on"
+        >
+          <div>Undergraduates / Visiting students</div>
+        </a>
+        <a th:href="@{/alumni(page=4)}" th:if="${page}!=4" class="visit-area">
+          <div>Undergraduates / Visiting students</div>
+        </a>
+      </div>
+      <div class="graduate-area" th:if="${page}==1 or ${page}==2">
+        Graduate students
+      </div>
+      <div th:text="${subCategory}" class="sub-category-area"></div>
+      <ol class="alumni-text-area">
+        <li
+          class="alumni-text-area-inner"
+          th:each="member:${memberList}"
+          th:object="${member}"
+        >
+          <span>[[*{englishName}]]</span
+          ><span
+            th:each="alumni:${alumniList}"
+            th:object="${alumni}"
+            th:if="${member.id}==${alumni.memberId}"
+          >
+            (<span
+              >[[*{start.getYear()}+1900]].[[*{start.getMonth()}+1]] -
+              [[*{end.getYear()}+1900]].[[*{end.getMonth()}+1]]</span
+            >) - [[*{content}]]
+          </span>
+          <div>
+            <form
+              action="/alumni/add"
+              method="post"
+              th:if="${session.isManager == 1}"
+            >
+              <input type="hidden" name="memberId" th:value="*{id}" />
+
+              입학 : <input type="date" name="start" /> 졸업 :
+              <input type="date" name="end" /> -
+              <input type="text" name="content" id="" />
+              <button>추가/수정</button>
+            </form>
+          </div>
+        </li>
+      </ol>
+    </div>
   </body>
 </html>

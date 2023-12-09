@@ -64,3 +64,15 @@ create table university(
 id int auto_increment primary key,
 content varchar(300) not null unique
 )
+
+create table alumni(
+id int auto_increment primary key,
+member_id int,
+content varchar(200),
+start date,
+end date
+)
+
+create table future_prospective(
+contents longtext
+)

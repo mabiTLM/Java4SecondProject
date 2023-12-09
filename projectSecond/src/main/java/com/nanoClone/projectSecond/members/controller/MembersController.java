@@ -7,14 +7,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.nanoClone.projectSecond.careers.service.CareersService;
 import com.nanoClone.projectSecond.members.domain.Members;
 import com.nanoClone.projectSecond.members.service.MembersService;
+import com.nanoClone.projectSecond.university.service.UniversityService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MembersController {
   @Autowired
   MembersService membersService;
+
+  @Autowired
+  CareersService careersService;
+
+  @Autowired
+  UniversityService universityService;
+
 
   int count = 10;
 
@@ -31,28 +40,8 @@ public class MembersController {
     model.addAttribute("undergraduateList", membersService.getAll("undergraduate"));
     model.addAttribute("visitingList", membersService.getAll("visiting"));
     model.addAttribute("administrativeList", membersService.getAll("administrative"));
-    return "/basic/layout";
-  }
-
-  @GetMapping("/alumni")
-  public String alumniPage(Model model) {
-    model.addAttribute("title", "Alumni");
-    model.addAttribute("path", "/members/alumni");
-    model.addAttribute("content", "alumniFragment");
-    model.addAttribute("contentHead", "alumniFragmentHead");
-    model.addAttribute("bannerBundle", "Members");
-    model.addAttribute("banner", "Alumni");
-    return "/basic/layout";
-  }
-
-  @GetMapping("/future_prospective")
-  public String futurePage(Model model) {
-    model.addAttribute("title", "Future Prospective");
-    model.addAttribute("path", "/members/futureProspective");
-    model.addAttribute("content", "futureProspectiveFragment");
-    model.addAttribute("contentHead", "futureProspectiveFragmentHead");
-    model.addAttribute("bannerBundle", "Members");
-    model.addAttribute("banner", "Future prospective");
+    model.addAttribute("careersList", careersService.getAll());
+    model.addAttribute("universityList", universityService.getAll());
     return "/basic/layout";
   }
 

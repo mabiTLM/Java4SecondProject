@@ -18,4 +18,12 @@ public class CareersService {
   public void add(Careers careers) {
     careersDAO.add(careers);
   }
+
+  public List<Careers> getAll() {
+    return careersDAO.getAll();
+  }
+
+  public void delete(int id) {
+    careersDAO.delete(id);
+  }
 }

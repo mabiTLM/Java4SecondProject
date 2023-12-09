@@ -29,10 +29,20 @@ public class CareersDAO {
         mapper, memberId);
   }
 
+  public List<Careers> getAll() {
+    return jdbcTemplate.query(
+        "select *, university.content as university_name from careers join university on university.id=university",
+        mapper);
+  }
+
   public void add(Careers careers) {
     jdbcTemplate.update(
         "insert into careers (university,member_id, title, content, start, end) values (?,?,?,?,?,?)",
         careers.getUniversity(), careers.getMemberId(), careers.getTitle(), careers.getContent(),
         careers.getStart(), careers.getEnd());
+  }
+
+  public void delete(int id) {
+    jdbcTemplate.update("delete from careers where id = ?", id);
   }
 }

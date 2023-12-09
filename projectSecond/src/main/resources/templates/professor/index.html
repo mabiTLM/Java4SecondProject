@@ -11,7 +11,9 @@
           th:object="${item}"
           class="professor-choice"
         >
-          [[*{name}]] 교수님
+          <a th:href="@{/professor(professorChoice=*{id})}">
+            [[*{name}]] 교수님
+          </a>
         </div>
       </div>
 
