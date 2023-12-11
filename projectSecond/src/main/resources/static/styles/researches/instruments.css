@@ -1,0 +1,30 @@
+.item-area {
+  display: inline-table;
+  box-sizing: border-box;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 19px 19px;
+  border: 1px solid #cbcdd2;
+  width: 22%;
+  height: 273px;
+}
+.item-image-area {
+  text-align: center;
+}
+.item-image-area img {
+  border: 1px solid #ced0d4;
+  height: 172px;
+  width: 100%;
+}
+
+.item-image-area p {
+  display: none;
+}
+
+.item-title-area {
+  font-size: 18px;
+  white-space: normal;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

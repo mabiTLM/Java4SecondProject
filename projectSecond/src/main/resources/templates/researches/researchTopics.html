@@ -1,7 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="researchTopicsFragmentHead"> </head>
+  <head th:fragment="researchTopicsFragmentHead">
+    <link rel="stylesheet" href="/styles/researches/topics.css" />
+  </head>
   <body>
-    <div th:fragment="researchTopicsFragment" class="container"></div>
+    <div th:fragment="researchTopicsFragment" class="container">
+      <div class="d-flex justify-content-between sub-title-area">
+        <a
+          th:href="@{/researchTopics(page=1)}"
+          th:if="${page}==1"
+          class="topic-area click-on"
+        >
+          <div>Research topics</div>
+        </a>
+        <a
+          th:href="@{/researchTopics(page=1)}"
+          th:if="${page}!=1"
+          class="topic-area"
+        >
+          <div>Research topics</div>
+        </a>
+
+        <a
+          th:href="@{/researchTopics(page=2)}"
+          th:if="${page}==2"
+          class="coc-area click-on"
+        >
+          <div>C-O-C Chemistry</div>
+        </a>
+        <a
+          th:href="@{/researchTopics(page=2)}"
+          th:if="${page}!=2"
+          class="coc-area"
+        >
+          <div>C-O-C Chemistry</div>
+        </a>
+
+        <a
+          th:href="@{/researchTopics(page=3)}"
+          th:if="${page}==3"
+          class="nano-area click-on"
+        >
+          <div>Chemistry of Carbon Nanomaterials</div>
+        </a>
+        <a
+          th:href="@{/researchTopics(page=3)}"
+          th:if="${page}!=3"
+          class="nano-area"
+        >
+          <div>Chemistry of Carbon Nanomaterials</div>
+        </a>
+
+        <a
+          th:href="@{/researchTopics(page=4)}"
+          th:if="${page}==4"
+          class="other-area click-on"
+        >
+          <div>Other On-going Works</div>
+        </a>
+        <a
+          th:href="@{/researchTopics(page=4)}"
+          th:if="${page}!=4"
+          class="other-area"
+        >
+          <div>Other On-going Works</div>
+        </a>
+      </div>
+      <div th:if="${list}!=null" th:each="item:${list}" th:object="${item}">
+        <div th:if="*{title}!=''">
+          <div th:text="*{title}" class="item-title-area"></div>
+          <div th:utext="*{content}" class="item-content-area"></div>
+        </div>
+        <div th:if="*{title}==''">
+          <div th:utext="*{content}" class="non-title-content-area"></div>
+        </div>
+      </div>
+
+      <a href="/researchTopics/add" th:if="${session.isManager == 1}">
+        <button>글쓰기</button>
+      </a>
+    </div>
   </body>
 </html>

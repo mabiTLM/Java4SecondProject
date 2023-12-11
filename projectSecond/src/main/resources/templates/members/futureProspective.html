@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="futureProspectiveFragmentHead"> </head>
+  <head th:fragment="futureProspectiveFragmentHead">
+    <link rel="stylesheet" href="/styles/members/future.css" />
+  </head>
   <body>
-    <div th:fragment="futureProspectiveFragment" class="container"></div>
+    <div th:fragment="futureProspectiveFragment" class="container">
+      <div
+        th:if="${future}!=null"
+        th:utext="${future.content}"
+        class="future-text"
+      ></div>
+      <a href="/future_prospective/add" th:if="${session.isManager == 1}">
+        <button>글쓰기</button>
+      </a>
+    </div>
   </body>
 </html>

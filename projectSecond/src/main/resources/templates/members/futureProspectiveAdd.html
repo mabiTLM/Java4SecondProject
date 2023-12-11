@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head th:fragment="futureProspectiveAddFragmentHead">
+    <link rel="stylesheet" href="/styles/members/future.css" />
+  </head>
+  <body>
+    <div th:fragment="futureProspectiveAddFragment" class="container">
+      <form action="/future_prospective/add" method="post" class="container">
+        <div class="form-floating mb-3">
+          <textarea
+            class="form-control"
+            name="content"
+            placeholder="글"
+            id="floatingTextarea"
+          >
+[[${futureContent}]]</textarea
+          >
+        </div>
+        <input type="hidden" th:value="${futureId}" name="id" />
+        <button class="btn btn-primary">글올리기</button>
+      </form>
+      <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+      <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/translations/ko.js"></script>
+      <script>
+        ClassicEditor.create(document.getElementById("floatingTextarea"), {
+          language: "ko",
+          ckfinder: { uploadUrl: "/upload" },
+        });
+      </script>
+    </div>
+  </body>
+</html>

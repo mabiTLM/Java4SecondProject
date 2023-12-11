@@ -4,13 +4,17 @@ create user nano@localhost identified by '1234';
 create database nano_test;
 grant all privileges on nano_test.* to nano@localhost;
 
-cmd
-mysql -u java -p
-
-
-
 
 use nano_test;
+
+
+drop table future_prospective;
+drop table alumni;
+drop table honors_and_awards;
+drop table careers;
+drop table university;
+drop table members;
+drop table news_board;
 
 create table news_board (
 id int auto_increment primary key,
@@ -40,6 +44,11 @@ site varchar(100),
 link longtext
 );
 
+create table university(
+id int auto_increment primary key,
+content varchar(300) not null unique
+);
+
 create table careers(
 id int auto_increment primary key,
 university int,
@@ -60,19 +69,33 @@ award_date date,
 contents varchar(300)
 );
 
-create table university(
-id int auto_increment primary key,
-content varchar(300) not null unique
-)
-
 create table alumni(
 id int auto_increment primary key,
 member_id int,
 content varchar(200),
 start date,
 end date
-)
+);
 
 create table future_prospective(
-contents longtext
+id int auto_increment primary key,
+content longtext
+);
+
+create table group_mission_statement(
+id int auto_increment primary key,
+content longtext
+);
+
+create table research_topics(
+id int auto_increment primary key,
+category varchar(100),
+title varchar(100),
+content longtext
+);
+
+create table instruments(
+id int auto_increment primary key,
+title varchar(100),
+image longtext
 )

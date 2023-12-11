@@ -1,4 +1,4 @@
-package com.nanoClone.projectSecond.futureProspective.domain;
+package com.nanoClone.projectSecond.groupMissonStatement.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FutureProspective {
+public class GroupMissionStatement {
   private int id;
   private String content;
 }

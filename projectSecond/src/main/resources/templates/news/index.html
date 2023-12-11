@@ -31,7 +31,7 @@
           </tr>
         </tbody>
       </table>
-      <a href="/news/add">
+      <a href="/news/add" th:if="${session.isManager == 1}">
         <button>글쓰기</button>
       </a>
       <div class="d-flex justify-content-center">

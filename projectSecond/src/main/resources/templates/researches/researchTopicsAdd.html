@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head th:fragment="researchTopicsAddFragmentHead">
+    <link rel="stylesheet" href="/styles/researches/topics.css" />
+  </head>
+  <body>
+    <div th:fragment="researchTopicsAddFragment" class="container">
+      <form action="/researchTopics/add" method="post" class="container">
+        <input
+          type="text"
+          name="title"
+          class="form-control"
+          placeholder="제목"
+        />
+        <div>
+          카테고리
+          <select name="category" id="">
+            <option value="topic">Research topics</option>
+            <option value="COC">C-O-C Chemistry</option>
+            <option value="CCN">Chemistry of Carbon Nanomaterials</option>
+            <option value="other">Other On-going Works</option>
+          </select>
+        </div>
+        <div class="form-floating mb-3">
+          <textarea
+            class="form-control"
+            name="content"
+            placeholder="글"
+            id="floatingTextarea"
+          ></textarea>
+        </div>
+        <button class="btn btn-primary">글올리기</button>
+      </form>
+      <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+      <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/translations/ko.js"></script>
+      <script>
+        ClassicEditor.create(document.getElementById("floatingTextarea"), {
+          language: "ko",
+          ckfinder: { uploadUrl: "/upload" },
+        });
+      </script>
+    </div>
+  </body>
+</html>

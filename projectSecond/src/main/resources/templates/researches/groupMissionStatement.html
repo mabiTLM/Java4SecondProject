@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="groupMissionStatementFragmentHead"> </head>
+  <head th:fragment="groupMissionStatementFragmentHead">
+    <link rel="stylesheet" href="/styles/researches/groupmission.css" />
+  </head>
   <body>
-    <div th:fragment="groupMissionStatementFragment" class="container"></div>
+    <div th:fragment="groupMissionStatementFragment" class="container">
+      <div
+        th:if="${groupMissionStatement}!=null"
+        th:utext="${groupMissionStatement.content}"
+        class="groupMissionStatementContent"
+      ></div>
+      <a href="/groupMissionStatement/add" th:if="${session.isManager == 1}">
+        <button>글쓰기</button>
+      </a>
+    </div>
   </body>
 </html>

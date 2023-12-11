@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="futureProspectiveAddFragmentHead"> </head>
+  <head th:fragment="groupMissionStatementAddFragmentHead"> </head>
   <body>
-    <div th:fragment="futureProspectiveAddFragment" class="container">
-      <form action="/news/add" method="post" class="container">
+    <div th:fragment="groupMissionStatementAddFragment" class="container">
+      <form action="/groupMissionStatement/add" method="post" class="container">
         <div class="form-floating mb-3">
           <textarea
             class="form-control"
             name="content"
             placeholder="글"
             id="floatingTextarea"
-          ></textarea>
+          >
+    [[${groupMissionStatement}]]</textarea
+          >
         </div>
+        <input type="hidden" th:value="${groupMissionStatementId}" name="id" />
         <button class="btn btn-primary">글올리기</button>
       </form>
+
       <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
       <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/translations/ko.js"></script>
       <script>

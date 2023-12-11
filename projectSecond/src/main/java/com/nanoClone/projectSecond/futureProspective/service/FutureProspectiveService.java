@@ -20,4 +20,8 @@ public class FutureProspectiveService {
       futureProspectiveDAO.add(futureProspective);
     }
   }
+
+  public FutureProspective get() {
+    return futureProspectiveDAO.get();
+  }
 }

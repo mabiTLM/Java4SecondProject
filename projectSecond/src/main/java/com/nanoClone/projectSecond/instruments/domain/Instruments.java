@@ -1,4 +1,4 @@
-package com.nanoClone.projectSecond.researchTopics.domain;
+package com.nanoClone.projectSecond.instruments.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,10 +10,11 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class ResearchTopics {
+public class Instruments {
   private int id;
   @NonNull
-  private String category;
   private String title;
-  private String content;
+  @NonNull
+  private String image;
+
 }
