@@ -1,4 +1,4 @@
-package com.nanoClone.projectSecond.link.dao;
+package com.nanoClone.projectSecond.link.domain;
 
 public class Link {
 

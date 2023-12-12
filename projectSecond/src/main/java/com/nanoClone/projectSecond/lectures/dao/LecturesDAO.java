@@ -1,8 +1,8 @@
 package com.nanoClone.projectSecond.lectures.dao;
 
-public class Lectures {
+public class LecturesDAO {
 
-  public Lectures() {
+  public LecturesDAO() {
     // TODO Auto-generated constructor stub
   }
 
