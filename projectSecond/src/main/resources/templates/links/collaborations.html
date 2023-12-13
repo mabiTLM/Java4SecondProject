@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="collaborationsFragmentHead"> </head>
+  <head th:fragment="collaborationsFragmentHead">
+    <link rel="stylesheet" href="/styles/links/collaborations.css" />
+  </head>
   <body>
-    <div th:fragment="collaborationsFragment" class="container"></div>
+    <div th:fragment="collaborationsFragment" class="container">
+      <div>
+        <div class="sub-title-area">UNIST</div>
+        <div th:each="item:${unistList}" th:object="${item}" class="item-area">
+          [[*{name}]]
+        </div>
+      </div>
+      <div>
+        <div class="sub-title-area">Outside</div>
+        <div
+          th:each="item:${outsideList}"
+          th:object="${item}"
+          class="item-area"
+        >
+          [[*{name}]]
+        </div>
+      </div>
+    </div>
   </body>
 </html>

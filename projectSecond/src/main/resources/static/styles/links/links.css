@@ -1,0 +1,6 @@
+.item-area p {
+  display: none;
+}
+.item-area {
+  display: inline-block;
+}

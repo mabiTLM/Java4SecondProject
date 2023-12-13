@@ -135,3 +135,10 @@ category varchar(30) not null,
 image longtext not null,
 link longtext not null
 );
+
+create table collaborations(
+id int auto_increment primary key,
+category varchar(50) not null,
+name varchar(100) not null,
+university varchar(100)
+);

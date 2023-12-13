@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="linksFragmentHead"> </head>
+  <head th:fragment="linksFragmentHead">
+    <link rel="stylesheet" href="/styles/links/links.css" />
+  </head>
   <body>
     <div th:fragment="linksFragment" class="container">
+      <div>
+        <div th:each="item:${list}" th:object="${list}" class="item-area">
+          <a th:href="*{link}">
+            <div th:text="*{image}"></div>
+          </a>
+        </div>
+      </div>
+
       <a href="/links/add">
         <button>추가</button>
       </a>
