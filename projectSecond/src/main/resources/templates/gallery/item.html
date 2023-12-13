@@ -1,0 +1,71 @@
+<html mxlns:th="http://www.thymeleaf.org">
+  <head th:fragment="galleryItemFragmentHead">
+    <link rel="stylesheet" href="/styles/gallery/item.css" />
+  </head>
+  <body>
+    <div
+      th:fragment="galleryItemFragment"
+      th:object="${galleryBoard}"
+      class="container"
+    >
+      <hr class="top-hr" />
+      <div class="d-flex justify-content-between align-items-center title-head">
+        <div class="d-flex">
+          <div class="title-area" th:text="*{title}"></div>
+        </div>
+        <div class="d-flex title-right-area">
+          <div th:text="*{memberName}"></div>
+          |
+          <div th:text="*{createdAt}" class="created-area"></div>
+          |
+          <div th:text="*{views}" class="view-area"></div>
+        </div>
+      </div>
+      <hr />
+      <p th:utext="*{content}"></p>
+      <hr />
+      <div class="d-flex justify-content-end">
+        <form action="/gallery/edit" th:if="${session.isManager == 1}">
+          <button
+            th:value="*{id}"
+            name="currentPost"
+            class="move-list-button btn btn-primary btn-lg"
+          >
+            수정
+          </button>
+        </form>
+        <form
+          action="/galleryBoard/delete"
+          method="post"
+          th:if="${session.isManager == 1}"
+        >
+          <button
+            th:value="*{id}"
+            name="currentPost"
+            class="move-list-button btn btn-primary btn-lg"
+          >
+            삭제
+          </button>
+        </form>
+        <a href="/galleryBoard">
+          <button class="move-list-button btn btn-primary btn-lg">목록</button>
+        </a>
+      </div>
+      <hr />
+      <div th:if="${previousItem}!=null">
+        <a th:href="@{/galleryBoard/{id}(id=${previousItem.id})}">
+          <span>이전글</span>
+          [[${previousItem.title}]]
+        </a>
+        <hr />
+      </div>
+      <div th:if="${nextItem}!=null">
+        <a th:href="@{/galleryBoard/{id}(id=${nextItem.id})}">
+          <span>다음글</span>
+          [[${nextItem.title}]]
+        </a>
+        <hr />
+      </div>
+    </div>
+  </body>
+</html>

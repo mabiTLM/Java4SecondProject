@@ -1,5 +1,6 @@
-package com.nanoClone.projectSecond.lectures.domain;
+package com.nanoClone.projectSecond.galleryBoard.domain;
 
+import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,11 +11,14 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Lectures {
+public class GalleryBoard {
   private int id;
   @NonNull
-  private String name;
+  private int memberId;
   @NonNull
-  private String lectureWhen;
-
+  private String title;
+  private String content;
+  private Date createdAt;
+  private int views;
+  private String memberName;
 }

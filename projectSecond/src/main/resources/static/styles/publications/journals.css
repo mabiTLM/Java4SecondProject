@@ -1,0 +1,49 @@
+.sub-title-area {
+  font-size: 18px;
+  padding-bottom: 30px;
+}
+.all-publications-area {
+  padding: 10px;
+  width: 50%;
+  border: 1px solid;
+  text-align: center;
+  border-top-left-radius: 49px;
+  border-bottom-left-radius: 49px;
+  border-color: #cdd0d3;
+}
+.selected-publications-area {
+  padding: 10px;
+  border: 1px solid;
+  width: 50%;
+  text-align: center;
+  border-top-right-radius: 49px;
+  border-bottom-right-radius: 49px;
+  border-color: #cdd0d3;
+}
+.click-on {
+  background-color: #003777;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.year-area {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.year-area-inner {
+  padding-right: 30px;
+}
+
+.sub-year-area {
+  border-top: 1px solid #cdd0d3;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  font-size: 24px;
+  font-weight: 700;
+}
+.sub-year-area-inner {
+  border-left: 8px solid #003777;
+  padding-left: 16px;
+}

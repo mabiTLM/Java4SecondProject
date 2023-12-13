@@ -1,7 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="journalsFragmentHead"> </head>
+  <head th:fragment="journalsFragmentHead">
+    <link rel="stylesheet" href="/styles/publications/journals.css" />
+  </head>
   <body>
-    <div th:fragment="journalsFragment" class="container"></div>
+    <div th:fragment="journalsFragment" class="container">
+      <div class="d-flex justify-content-between sub-title-area">
+        <a
+          th:href="@{/journals(page=1)}"
+          th:if="${page}==1"
+          class="all-publications-area click-on"
+        >
+          <div>All publications</div>
+        </a>
+        <a
+          th:href="@{/journals(page=1)}"
+          th:if="${page}!=1"
+          class="all-publications-area"
+        >
+          <div>All publications</div>
+        </a>
+
+        <a
+          th:href="@{/journals(page=2)}"
+          th:if="${page}==2"
+          class="selected-publications-area click-on"
+        >
+          <div>Selected publications</div>
+        </a>
+        <a
+          th:href="@{/journals(page=2)}"
+          th:if="${page}!=2"
+          class="selected-publications-area"
+        >
+          <div>Selected publications</div>
+        </a>
+      </div>
+      <div class="year-area d-flex justify-content-center">
+        <div class="year-area-inner">2023</div>
+        <div class="year-area-inner">2022~2016</div>
+        <div class="year-area-inner">2015~2009</div>
+        <div class="year-area-inner">2008~</div>
+      </div>
+      <div class="sub-year-area">
+        <div class="sub-year-area-inner">Year</div>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="lecturesFragmentHead"> </head>
+  <head th:fragment="lecturesFragmentHead">
+    <link rel="stylesheet" href="/styles/lectures/index.css" />
+  </head>
   <body>
-    <div th:fragment="lecturesFragment" class="container"></div>
+    <div th:fragment="lecturesFragment" class="container">
+      <form
+        action="/lectures/add"
+        method="post"
+        th:if="${session.isManager == 1}"
+      >
+        <input type="text" name="name" placeholder="과목명" />
+
+        <input type="text" name="lectureWhen" placeholder="기간" />
+        <button>추가</button>
+      </form>
+      <div th:each="item:${list}" th:object="${item}" class="list-area">
+        <span class="bar-area">-</span>
+        <span class="name-area"> <span th:text="*{name}"></span> I - </span>
+        <span th:text="*{lectureWhen}" class="lecture-when-area"></span>
+      </div>
+    </div>
   </body>
 </html>

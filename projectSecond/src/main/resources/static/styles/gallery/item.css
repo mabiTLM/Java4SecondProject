@@ -1,0 +1,23 @@
+.top-hr {
+  opacity: 1;
+  border: solid 1px black;
+}
+.title-head {
+  font-size: 18px;
+}
+.title-area {
+  font-weight: 700;
+  color: #333;
+}
+.title-right-area {
+  color: #9a9a9a;
+}
+.created-area {
+  margin-right: 10px;
+}
+.view-area {
+  margin-left: 10px;
+}
+.move-list-button {
+  margin: 0px 10px;
+}

@@ -1,5 +1,6 @@
-package com.nanoClone.projectSecond.lectures.domain;
+package com.nanoClone.projectSecond.patents.domain;
 
+import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,11 +11,11 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Lectures {
+public class Patents {
   private int id;
   @NonNull
-  private String name;
-  @NonNull
-  private String lectureWhen;
-
+  private String content;
+  private int isRegist;
+  private String registNumber;
+  private Date registDate;
 }

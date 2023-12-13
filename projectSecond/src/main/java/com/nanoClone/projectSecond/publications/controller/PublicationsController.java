@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PublicationsController {
   @GetMapping("/journals")
   public String journalsPage(Model model, @RequestParam Map<String, String> data) {
+    int page = data.get("page") != null ? Integer.parseInt(data.get("page")) : 1;
+    model.addAttribute("page", page);
+
+
     model.addAttribute("title", "Journals");
-    model.addAttribute("path", "/publication/journals");
+    model.addAttribute("path", "/publications/journals");
     model.addAttribute("content", "journalsFragment");
     model.addAttribute("contentHead", "journalsFragmentHead");
     model.addAttribute("bannerBundle", "Publications");
@@ -19,14 +23,4 @@ public class PublicationsController {
     return "/basic/layout";
   }
 
-  @GetMapping("/patents")
-  public String groupMissionStatementPage(Model model, @RequestParam Map<String, String> data) {
-    model.addAttribute("title", "Patents");
-    model.addAttribute("path", "/publication/patents");
-    model.addAttribute("content", "patentsFragment");
-    model.addAttribute("contentHead", "patentsFragmentHead");
-    model.addAttribute("bannerBundle", "Publications");
-    model.addAttribute("banner", "Patents");
-    return "/basic/layout";
-  }
 }

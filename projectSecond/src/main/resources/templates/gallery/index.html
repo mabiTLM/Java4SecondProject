@@ -1,7 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="galleryFragmentHead"> </head>
+  <head th:fragment="galleryFragmentHead">
+    <link rel="stylesheet" href="/styles/gallery/index.css" />
+  </head>
   <body>
-    <div th:fragment="galleryFragment" class="container"></div>
+    <div th:fragment="galleryFragment" class="container">
+      <form action="" class="gallery-search-bar">
+        <input type="text" />
+        <button>검색</button>
+      </form>
+      <div class="list-padding-area">
+        <div th:each="item:${list}" th:object="${item}" class="item-area">
+          <a th:href="@{/galleryBoard/{galleryBoardId}(galleryBoardId=*{id})}">
+            <div class="item-area-inner">
+              <div th:utext="*{content}" class="item-content-area"></div>
+              <div th:text="*{title}" class="item-title-area"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <nav
+          aria-label="Page navigation example"
+          th:with="nowPage=${#numbers.formatInteger(param.page !=null ? param.page:1,1)}"
+        >
+          <ul class="pagination">
+            <li class="page-item" th:if="${nowPage}>1">
+              <a
+                class="page-link"
+                th:href="@{/news(page=${nowPage-1})}"
+                aria-label="Previous"
+              >
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li
+              th:each="page :${#numbers.sequence(1,pageCount)}"
+              class="page-item"
+            >
+              <a class="page-link" th:href="@{/news(page=${page})}"
+                >[[${page}]]</a
+              >
+            </li>
+
+            <li class="page-item" th:if="${nowPage} != ${pageCount}">
+              <a
+                class="page-link"
+                th:href="@{/news(page=${nowPage}+1)}"
+                aria-label="Next"
+              >
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <a href="/galleryBoard/add">
+        <button>글쓰기</button>
+      </a>
+    </div>
   </body>
 </html>

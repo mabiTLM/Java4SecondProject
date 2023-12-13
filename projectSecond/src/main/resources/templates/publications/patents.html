@@ -1,7 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="patentsFragmentHead"> </head>
+  <head th:fragment="patentsFragmentHead">
+    <link rel="stylesheet" href="/styles/publications/patents.css" />
+  </head>
   <body>
-    <div th:fragment="patentsFragment" class="container"></div>
+    <div th:fragment="patentsFragment" class="container">
+      <div>
+        <form
+          action="/patents/add"
+          method="post"
+          th:if="${session.isManager == 1}"
+        >
+          <div>
+            <input type="text" name="content" placeholder="내용" />
+          </div>
+          <select name="isRegist" id="">
+            <option value="0">-</option>
+            <option value="1">출원번호</option>
+            <option value="2">등록번호</option>
+          </select>
+          <input type="text" name="registNumber" placeholder="출원번호" />
+          <input type="date" name="registDate" />
+          <button>추가</button>
+        </form>
+      </div>
+      <div th:each="item, i:${list}" th:object="${item}">
+        <div class="d-flex">
+          <div class="index-number-area">[[${i.count}]]</div>
+          <div class="content-area">
+            <div>[[*{content}]]</div>
+            <div>
+              (
+              <span th:if="*{isRegist}==0"></span>
+              <span th:if="*{isRegist}==1">출원번호</span>
+              <span th:if="*{isRegist}==2">등록번호</span>
+              <span
+                th:if="*{registNumber} != ''"
+                th:text="*{registNumber}"
+              ></span>
+              <span th:if="*{registNumber} == ''">출원 준비중</span>
+              ) (
+              <span
+                th:if="*{registDate} != null"
+                th:text="*{registDate}"
+              ></span>
+              <span th:if="*{registDate} == null">출원 준비중</span>
+              )
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

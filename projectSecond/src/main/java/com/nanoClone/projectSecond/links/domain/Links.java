@@ -1,4 +1,4 @@
-package com.nanoClone.projectSecond.lectures.domain;
+package com.nanoClone.projectSecond.links.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,11 +10,12 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Lectures {
+public class Links {
   private int id;
   @NonNull
-  private String name;
+  private String category;
   @NonNull
-  private String lectureWhen;
-
+  private String image;
+  @NonNull
+  private String link;
 }

@@ -1,9 +1,22 @@
 package com.nanoClone.projectSecond.lectures.service;
 
-public class LecturesService {
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.nanoClone.projectSecond.lectures.dao.LecturesDAO;
+import com.nanoClone.projectSecond.lectures.domain.Lectures;
 
-  public LecturesService() {
-    // TODO Auto-generated constructor stub
+@Service
+public class LecturesService {
+  @Autowired
+  LecturesDAO lecturesDAO;
+
+  public void add(Lectures lectures) {
+    lecturesDAO.add(lectures);
+  }
+
+  public List<Lectures> getAll() {
+    return lecturesDAO.getAll();
   }
 
 }

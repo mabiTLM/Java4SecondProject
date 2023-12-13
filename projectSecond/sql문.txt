@@ -7,7 +7,12 @@ grant all privileges on nano_test.* to nano@localhost;
 
 use nano_test;
 
-
+drop table gallery_board;
+drop table lectures;
+drop table patents;
+drop table instruments;
+drop table research_topics;
+drop table group_mission_statement;
 drop table future_prospective;
 drop table alumni;
 drop table honors_and_awards;
@@ -98,4 +103,35 @@ create table instruments(
 id int auto_increment primary key,
 title varchar(100),
 image longtext
-)
+);
+
+create table patents(
+id int auto_increment primary key,
+content varchar(300),
+is_regist tinyint,
+regist_number varchar(100),
+regist_date date
+);
+
+create table lectures(
+id int auto_increment primary key,
+name varchar(300),
+lecture_when longtext
+);
+
+create table gallery_board(
+id int auto_increment primary key,
+member_id int,
+title varchar(150) not null,
+content longtext,
+created_at Date default (current_date),
+views int default 0,
+foreign key (member_id) references members(id)
+);
+
+create table links(
+id int auto_increment primary key,
+category varchar(30) not null,
+image longtext not null,
+link longtext not null
+);

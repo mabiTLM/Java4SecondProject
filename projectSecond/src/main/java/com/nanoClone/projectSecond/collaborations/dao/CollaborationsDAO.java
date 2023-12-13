@@ -1,8 +1,8 @@
 package com.nanoClone.projectSecond.collaborations.dao;
 
-public class Collaborations {
+public class CollaborationsDAO {
 
-  public Collaborations() {
+  public CollaborationsDAO() {
     // TODO Auto-generated constructor stub
   }
 
