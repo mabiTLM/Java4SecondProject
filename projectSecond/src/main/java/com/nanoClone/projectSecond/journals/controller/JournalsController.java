@@ -88,7 +88,7 @@ public class JournalsController {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    tempJournals.setFile(uploadImageUrl);
+    tempJournals.setImage(uploadImageUrl);
 
 
     journalsService.add(tempJournals);

@@ -1,12 +1,16 @@
 package com.nanoClone.projectSecond.members.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import com.nanoClone.projectSecond.careers.service.CareersService;
 import com.nanoClone.projectSecond.members.domain.Members;
 import com.nanoClone.projectSecond.members.service.MembersService;
@@ -111,7 +115,7 @@ public class MembersController {
 
   @PostMapping("/manager")
   public String managerPagePost(Model model, HttpSession session,
-      @RequestParam Map<String, String> data) {
+      @RequestParam Map<String, String> data, @RequestParam("image") MultipartFile image) {
     if (session.getAttribute("isLogin") != null
         && Integer.parseInt(session.getAttribute("isManager").toString()) == 1) {
       Members tempMember = membersService.get(Integer.parseInt(data.get("id")));
@@ -127,6 +131,26 @@ public class MembersController {
       tempMember.setPhone(data.get("phone"));
       tempMember.setSite(data.get("site"));
       tempMember.setLink(data.get("link"));
+
+
+      String originImageName = image.getOriginalFilename();
+      String[] tempImageNames = originImageName.split("[.]");
+      String extImage = originImageName.substring(originImageName.indexOf("."));
+      String randomImageName = UUID.randomUUID() + extImage;
+      String saveImagePath = System.getProperty("user.dir")
+          + "\\src\\main\\resources\\static\\images\\member\\upload\\" + randomImageName;
+      String uploadImageUrl = "/images/member/upload/" + randomImageName;
+      File saveImageFile = new File(saveImagePath);
+      try {
+        image.transferTo(saveImageFile);
+      } catch (IllegalStateException e) {
+        e.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      tempMember.setImage(uploadImageUrl);
+
+
       membersService.update(tempMember);
 
       return "redirect:/manager";
