@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head th:fragment="journalsAddFragmentHead">
+    <link rel="stylesheet" href="/styles/publications/journalsAdd.css" />
+  </head>
+  <body>
+    <div th:fragment="journalsAddFragment" class="container">
+      <form action="/journals/add" method="post" enctype="multipart/form-data">
+        <select name="selected" id="">
+          <option value="1">unselect</option>
+          <option value="2">select</option>
+        </select>
+        <input type="date" name="makeDate" />
+        <input type="text" name="title" placeholder="제목" />
+        <input type="text" name="maker" placeholder="저자" />
+        <input type="text" name="bookName" placeholder="책 제목" />
+        <input type="text" name="volume" placeholder="쪽수" />
+        <input type="text" name="page" placeholder="페이지" />
+        <input type="text" name="impactFactor" placeholder="IF점수" />
+        이미지<input type="file" name="image" /> 파일<input
+          type="file"
+          name="file"
+        />
+        <input type="text" name="link" placeholder="링크" />
+        <button>추가</button>
+      </form>
+    </div>
+  </body>
+</html>

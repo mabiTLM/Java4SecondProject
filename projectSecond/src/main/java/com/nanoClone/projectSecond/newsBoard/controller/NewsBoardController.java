@@ -142,7 +142,6 @@ public class NewsBoardController {
       System.out.println(uploadFile.getOriginalFilename());
       String originName = uploadFile.getOriginalFilename();
       String[] tempNames = originName.split("[.]");
-      System.out.println(tempNames[0]);
       String ext = originName.substring(originName.indexOf("."));
       String randomName = UUID.randomUUID() + ext;
       String savePath =

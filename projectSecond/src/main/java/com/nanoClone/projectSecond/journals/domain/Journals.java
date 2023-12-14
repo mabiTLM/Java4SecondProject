@@ -1,4 +1,4 @@
-package com.nanoClone.projectSecond.publications.domain;
+package com.nanoClone.projectSecond.journals.domain;
 
 import java.sql.Date;
 import lombok.AllArgsConstructor;
@@ -11,17 +11,21 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Publications {
+public class Journals {
   private int id;
+  @NonNull
   private int selected;
   @NonNull
-  private Date make_date;
+  private Date makeDate;
+  @NonNull
   private String title;
+  @NonNull
   private String maker;
-  private String book_name;
+  @NonNull
+  private String bookName;
   private String volume;
   private String page;
-  private int impactFactor;
+  private String impactFactor;
   private String image;
   private String file;
   private String link;

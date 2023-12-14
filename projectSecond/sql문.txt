@@ -105,6 +105,21 @@ title varchar(100),
 image longtext
 );
 
+create table journals(
+id int auto_increment primary key,
+selected tinyint,
+make_date date,
+title varchar(100),
+maker varchar(100),
+book_name varchar(100),
+volume varchar(100),
+page varchar(100),
+impact_factor varchar(100),
+image longtext,
+file longtext,
+link longtext
+);
+
 create table patents(
 id int auto_increment primary key,
 content varchar(300),
