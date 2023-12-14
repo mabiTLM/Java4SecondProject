@@ -138,22 +138,76 @@
           </div>
           <div class="bottom-text-area">
             <div class="bottom-sub-title-area">Publications</div>
-            <div></div>
-          </div>
-          <div class="">
-            <div class="bottom-text-area-half recruit-area">
-              <div class="recruit-text-area">
-                <div class="gray-title-area">Recruit</div>
-                <div class="gray-sub-text">
-                  석/박사 대학원생 및 석사급 연구원 모집
+            <div class="publications-slide-area">
+              <div id="publicationsCaptions" class="carousel slide">
+                <div class="carousel-inner">
+                  <div th:each="list:${journalsList}" th:object="${list}">
+                    <div th:if="${listStat.first}" class="carousel-item active">
+                      <a href="/journals">
+                        <div class="only-img-area">
+                          <img th:src="@{*{image}}" alt="" />
+                        </div>
+                        <div th:text="*{title}" class="list-title-area"></div>
+                      </a>
+                    </div>
+
+                    <div th:if="${!listStat.first}" class="carousel-item">
+                      <a href="/journals">
+                        <div class="only-img-area">
+                          <img th:src="@{*{image}}" alt="" />
+                        </div>
+                        <div th:text="*{title}" class="list-title-area"></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-controll-button-area">
+                  <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#publicationsCaptions"
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#publicationsCaptions"
+                    data-bs-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="">
+            <div class="bottom-text-area-half recruit-area">
+              <a href="/future_prospective">
+                <div class="recruit-text-area">
+                  <div class="gray-title-area">Recruit</div>
+                  <div class="gray-sub-text">
+                    석/박사 대학원생 및 석사급 연구원 모집
+                  </div>
+                </div>
+              </a>
+            </div>
             <div class="bottom-text-area-half research-area">
-              <div class="research-text-area">
-                <div class="gray-title-area">Research Topics</div>
-                <div class="gray-sub-text">Group Mission Statement</div>
-              </div>
+              <a href="/groupMissionStatement">
+                <div class="research-text-area">
+                  <div class="gray-title-area">Research Topics</div>
+                  <div class="gray-sub-text">Group Mission Statement</div>
+                </div>
+              </a>
             </div>
           </div>
         </div>

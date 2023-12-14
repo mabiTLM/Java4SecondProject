@@ -19,4 +19,8 @@ public class JournalsService {
     return journalsDAO.getAll();
   }
 
+  public List<Journals> getAll(int page, int count) {
+    return journalsDAO.getAll((page - 1) * count, count);
+  }
+
 }

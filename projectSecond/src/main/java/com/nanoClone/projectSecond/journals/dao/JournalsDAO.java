@@ -34,4 +34,9 @@ public class JournalsDAO {
   public List<Journals> getAll() {
     return jdbcTemplate.query("select * from journals order by make_date", mapper);
   }
+
+  public List<Journals> getAll(int idx, int count) {
+    return jdbcTemplate.query("select * from journals order by id desc limit ?, ?", mapper, idx,
+        count);
+  }
 }
