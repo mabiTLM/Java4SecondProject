@@ -8,7 +8,7 @@
       <div class="out-div">
         <div th:each="item:${list}" th:object="${item}" class="item-area">
           <a th:href="@{{link}(link=*{link})}">
-            <div th:utext="*{image}"></div>
+            <img th:src="@{*{image}}" alt="" class="image-area-inner" />
           </a>
         </div>
       </div>

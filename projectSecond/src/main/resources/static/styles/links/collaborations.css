@@ -12,3 +12,7 @@
   display: inline-block;
   font-size: 18px;
 }
+.image-area-inner {
+  width: 200px;
+  height: 48px;
+}

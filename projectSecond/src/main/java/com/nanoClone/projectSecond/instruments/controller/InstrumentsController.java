@@ -1,12 +1,16 @@
 package com.nanoClone.projectSecond.instruments.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import com.nanoClone.projectSecond.instruments.domain.Instruments;
 import com.nanoClone.projectSecond.instruments.service.InstrumentsService;
 
@@ -43,10 +47,30 @@ public class InstrumentsController {
   }
 
   @PostMapping("/instruments/add")
-  public String instrumentsAddPagePost(Model model, @RequestParam Map<String, String> data) {
-    Instruments instruments = new Instruments(data.get("title"), data.get("image"));
+  public String instrumentsAddPagePost(Model model, @RequestParam Map<String, String> data,
+      @RequestParam("image") MultipartFile image) {
+    if (data.get("title").replaceAll(" ", "") != "" && image != null) {
+      Instruments tempInstruments = new Instruments(data.get("title"));
 
-    instrumentsService.add(instruments);
+      String originImageName = image.getOriginalFilename();
+      String[] tempImageNames = originImageName.split("[.]");
+      String extImage = originImageName.substring(originImageName.indexOf("."));
+      String randomImageName = UUID.randomUUID() + extImage;
+      String saveImagePath = System.getProperty("user.dir")
+          + "\\src\\main\\resources\\static\\images\\instruments\\upload\\" + randomImageName;
+      String uploadImageUrl = "/images/instruments/upload/" + randomImageName;
+      File saveImageFile = new File(saveImagePath);
+      try {
+        image.transferTo(saveImageFile);
+      } catch (IllegalStateException e) {
+        e.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      tempInstruments.setImage(uploadImageUrl);
+
+      instrumentsService.add(tempInstruments);
+    }
     return "redirect:/instruments";
   }
 }

@@ -6,7 +6,9 @@
   <body>
     <div th:fragment="instrumentsFragment" class="container">
       <div th:each="item:${list}" th:object="${item}" class="item-area">
-        <div th:utext="*{image}" class="item-image-area"></div>
+        <div class="item-image-area">
+          <img th:src="@{*{image}}" alt="" />
+        </div>
         <div th:text="*{title}" class="item-title-area"></div>
       </div>
       <div class="d-flex justify-content-center">

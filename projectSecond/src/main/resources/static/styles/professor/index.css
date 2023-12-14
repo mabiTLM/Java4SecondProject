@@ -111,3 +111,10 @@
   padding-top: 10px;
   color: #999;
 }
+
+.image-area {
+  height: 212px;
+  width: 190px;
+  border-radius: 17px;
+  overflow: hidden;
+}

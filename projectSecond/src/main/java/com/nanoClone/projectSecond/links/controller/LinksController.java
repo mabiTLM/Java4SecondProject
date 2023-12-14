@@ -1,13 +1,16 @@
 package com.nanoClone.projectSecond.links.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import com.nanoClone.projectSecond.links.domain.Links;
 import com.nanoClone.projectSecond.links.service.LinksService;
 import jakarta.servlet.http.HttpSession;
@@ -42,8 +45,28 @@ public class LinksController {
 
   @PostMapping("/links/add")
   public String linksAddPagePost(@RequestParam Map<String, String> data, HttpSession session,
-      RedirectAttributes redirectAttributes) {
-    linksService.add(new Links(data.get("category"), data.get("image"), data.get("link")));
+      @RequestParam("image") MultipartFile image) {
+
+    String originImageName = image.getOriginalFilename();
+    String[] tempImageNames = originImageName.split("[.]");
+    String extImage = originImageName.substring(originImageName.indexOf("."));
+    String randomImageName = UUID.randomUUID() + extImage;
+    String saveImagePath = System.getProperty("user.dir")
+        + "\\src\\main\\resources\\static\\images\\links\\upload\\" + randomImageName;
+    String uploadImageUrl = "/images/links/upload/" + randomImageName;
+    File saveImageFile = new File(saveImagePath);
+    try {
+      image.transferTo(saveImageFile);
+    } catch (IllegalStateException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+
+    linksService.add(new Links(data.get("category"), uploadImageUrl, data.get("link")));
+
+
     return "redirect:/links";
   }
 

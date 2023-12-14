@@ -5,9 +5,13 @@
     <link rel="stylesheet" href="/styles/intro/index.css" />
   </head>
   <body>
-    <div th:fragment="introFragment" class="container">
-      <div id="bigMainImg" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
+    <div th:fragment="introFragment">
+      <div
+        id="bigMainImg"
+        class="carousel slide container"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators button-area">
           <button
             type="button"
             data-bs-target="#bigMainImg"
@@ -29,49 +33,40 @@
             aria-label="Slide 3"
           ></button>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
+        <div class="carousel-inner list-inner-area">
+          <div class="carousel-item active item-inner-area">
             <img
-              src="/images/intro/1623750537590.jpg"
-              class="d-block w-100"
+              src="/images/intro/1653972460498.jpg"
+              class="d-block"
               alt="..."
             />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>
-                Some representative placeholder content for the first slide.
-              </p>
+            <div class="carousel-caption d-none d-md-block big-slide-text">
+              <p>2022 Homecoming day</p>
             </div>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item item-inner-area">
             <img
               src="/images/intro/1623750537590.jpg"
-              class="d-block w-100"
+              class="d-block"
               alt="..."
             />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>
-                Some representative placeholder content for the second slide.
-              </p>
+            <div class="carousel-caption d-none d-md-block big-slide-text">
+              <p>2021 Macro 2020+</p>
             </div>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item item-inner-area">
             <img
-              src="/images/intro/1623750537590.jpg"
-              class="d-block w-100"
+              src="/images/intro/1623750537635.jpg"
+              class="d-block"
               alt="..."
             />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>
-                Some representative placeholder content for the third slide.
-              </p>
+            <div class="carousel-caption d-none d-md-block big-slide-text">
+              <p>2019 Homecoming day</p>
             </div>
           </div>
         </div>
         <button
-          class="carousel-control-prev"
+          class="carousel-control-prev big-slide"
           type="button"
           data-bs-target="#bigMainImg"
           data-bs-slide="prev"
@@ -80,7 +75,7 @@
           <span class="visually-hidden">Previous</span>
         </button>
         <button
-          class="carousel-control-next"
+          class="carousel-control-next big-slide"
           type="button"
           data-bs-target="#bigMainImg"
           data-bs-slide="next"
@@ -89,90 +84,78 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <div>
-        밑에쪽
-        <div id="leftSideSlide" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#leftSideSlide"
-              data-bs-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#leftSideSlide"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#leftSideSlide"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="/images/intro/1623750537590.jpg"
-                class="d-block w-100"
-                alt="..."
-              />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>
-                  Some representative placeholder content for the first slide.
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                src="/images/intro/1623750537590.jpg"
-                class="d-block w-100"
-                alt="..."
-              />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>
-                  Some representative placeholder content for the second slide.
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                src="/images/intro/1623750537590.jpg"
-                class="d-block w-100"
-                alt="..."
-              />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>
-                  Some representative placeholder content for the third slide.
-                </p>
+      <div class="background-gray-area">
+        <div class="container d-flex">
+          <div class="bottom-text-area">
+            <div class="bottom-sub-title-area">News</div>
+            <div class="news-slide-area">
+              <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-inner">
+                  <div th:each="list:${newsList}" th:object="${list}">
+                    <div th:if="${listStat.first}" class="carousel-item active">
+                      <a th:href="@{/news/{id}(id=*{id})}">
+                        <div th:utext="*{content}" class="only-img-area"></div>
+                        <div th:text="*{title}" class="list-title-area"></div>
+                      </a>
+                    </div>
+
+                    <div th:if="${!listStat.first}" class="carousel-item">
+                      <a th:href="@{/news/{id}(id=*{id})}">
+                        <div th:utext="*{content}" class="only-img-area"></div>
+                        <div th:text="*{title}" class="list-title-area"></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-controll-button-area">
+                  <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#leftSideSlide"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#leftSideSlide"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+          <div class="bottom-text-area">
+            <div class="bottom-sub-title-area">Publications</div>
+            <div></div>
+          </div>
+          <div class="">
+            <div class="bottom-text-area-half recruit-area">
+              <div class="recruit-text-area">
+                <div class="gray-title-area">Recruit</div>
+                <div class="gray-sub-text">
+                  석/박사 대학원생 및 석사급 연구원 모집
+                </div>
+              </div>
+            </div>
+            <div class="bottom-text-area-half research-area">
+              <div class="research-text-area">
+                <div class="gray-title-area">Research Topics</div>
+                <div class="gray-sub-text">Group Mission Statement</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,12 @@
   <head th:fragment="instrumentsAddFragmentHead"> </head>
   <body>
     <div th:fragment="instrumentsAddFragment" class="container">
-      <form action="/instruments/add" method="post" class="container">
+      <form
+        action="/instruments/add"
+        method="post"
+        class="container"
+        enctype="multipart/form-data"
+      >
         <input
           type="text"
           name="title"
@@ -12,24 +17,10 @@
         />
         <div></div>
         <div class="form-floating mb-3">
-          <textarea
-            class="form-control"
-            name="image"
-            placeholder="사진추가"
-            id="floatingTextarea"
-          ></textarea>
+          사진<input type="file" name="image" />
         </div>
         <button class="btn btn-primary">글올리기</button>
       </form>
-
-      <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
-      <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/translations/ko.js"></script>
-      <script>
-        ClassicEditor.create(document.getElementById("floatingTextarea"), {
-          language: "ko",
-          ckfinder: { uploadUrl: "/upload" },
-        });
-      </script>
     </div>
   </body>
 </html>

@@ -14,7 +14,6 @@ public class Instruments {
   private int id;
   @NonNull
   private String title;
-  @NonNull
   private String image;
 
 }

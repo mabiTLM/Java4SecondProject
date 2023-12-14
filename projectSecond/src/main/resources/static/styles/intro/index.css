@@ -1,3 +1,145 @@
+#bigMainImg {
+  height: 570.47px;
+}
+
+.list-inner-area {
+  height: 70%;
+}
+
+.item-inner-area {
+  height: 100%;
+}
+
+.item-inner-area img {
+  width: 754px;
+  height: 100%;
+}
+
 #leftSideSlide {
   width: 33%;
+}
+
+.button-area > button {
+  width: 50px !important;
+  background-color: gray !important;
+}
+.carousel-indicators {
+  display: flex;
+  justify-content: right;
+  position: relative;
+  top: 150px;
+  left: -250px;
+  margin: 0;
+}
+.button-area > .active {
+  background-color: #007aff !important;
+}
+.carousel-control-next,
+.carousel-control-prev {
+  position: relative;
+  display: inline;
+  background-color: black;
+}
+.big-slide {
+  top: -48%;
+  width: 5%;
+  left: 82%;
+}
+.carousel-caption {
+  font-size: 28px;
+  font-weight: 700;
+  color: #003777;
+}
+
+.big-slide-text {
+  left: 388px;
+  top: -235px;
+  position: relative;
+}
+
+.background-gray-area {
+  padding: 40px 0 45px;
+  background: #e7e9eb;
+}
+
+.bottom-text-area {
+  width: 31%;
+  box-sizing: border-box;
+  height: 509px;
+  margin-right: 16px;
+  padding: 35px 29px 0 30px;
+  background: #fff;
+  border: 1px solid #cbcdd2;
+  border-radius: 15px;
+}
+.bottom-text-area-half {
+  margin-bottom: 17px;
+  box-sizing: border-box;
+  height: 246px;
+  margin-right: 16px;
+  padding: 35px 29px 0 30px;
+  background: #fff;
+  border: 1px solid #cbcdd2;
+  border-radius: 15px;
+}
+.recruit-area {
+  background: #fff url("/images/intro/hatIcon.png") no-repeat center 71px;
+}
+.recruit-text-area {
+  padding-top: 100px;
+  text-align: center;
+}
+.research-area {
+  background: #fff url("/images/intro/bookIcon.png") no-repeat center 68px;
+}
+
+.research-text-area {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.bottom-sub-title-area {
+  margin-bottom: 17px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #003777;
+  font-size: 26px;
+  font-weight: 700;
+  color: #003777;
+}
+
+.gray-title-area {
+  display: inline-block;
+  line-height: 28px;
+  padding: 0 20px;
+  border-radius: 15px;
+  background: #e0e7ef;
+  font-size: 16px;
+  font-weight: 500;
+  color: #003777;
+}
+
+.gray-sub-text {
+  padding-top: 13px;
+  font-size: 18px;
+}
+
+.only-img-area p {
+  display: none;
+}
+.only-img-area img {
+  width: 100%;
+  height: 300px;
+}
+
+.list-title-area {
+  padding: 15px 0 0;
+  font-size: 18px;
+  white-space: normal;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bottom-controll-button-area {
+  text-align: center;
 }

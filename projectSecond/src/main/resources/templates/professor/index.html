@@ -18,7 +18,9 @@
       </div>
 
       <div class="professor-info-area d-flex container">
-        <div><img src="/images/professor/img_professor.jpg" alt="" /></div>
+        <div class="image-area">
+          <img th:src="@{${choice.image}}" alt="" class="image-area-inner" />
+        </div>
         <div class="professor-info-area-inner">
           <div class="name-area">
             <span th:text="${choice.englishName}"></span>

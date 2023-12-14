@@ -3,29 +3,16 @@
   <head th:fragment="linksAddFragmentHead"> </head>
   <body>
     <div th:fragment="linksAddFragment" class="container">
-      <form action="/links/add" method="post">
+      <form action="/links/add" method="post" enctype="multipart/form-data">
         <select name="category" id="">
           <option value="links">Links</option>
           <option value="funding_sources">Funding sources</option>
         </select>
         <input type="text" name="link" placeholder="링크" />
-        <textarea
-          class="form-control"
-          name="image"
-          placeholder="이미지"
-          id="floatingTextarea"
-        ></textarea>
+        이미지 <input type="file" name="image" />
+
         <button>추가</button>
       </form>
-
-      <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
-      <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/translations/ko.js"></script>
-      <script>
-        ClassicEditor.create(document.getElementById("floatingTextarea"), {
-          language: "ko",
-          ckfinder: { uploadUrl: "/upload" },
-        });
-      </script>
     </div>
   </body>
 </html>

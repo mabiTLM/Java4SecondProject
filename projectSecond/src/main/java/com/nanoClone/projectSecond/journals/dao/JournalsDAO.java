@@ -2,6 +2,7 @@ package com.nanoClone.projectSecond.journals.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -28,5 +29,9 @@ public class JournalsDAO {
         journals.getSelected(), journals.getMakeDate(), journals.getTitle(), journals.getMaker(),
         journals.getBookName(), journals.getVolume(), journals.getPage(),
         journals.getImpactFactor(), journals.getImage(), journals.getFile(), journals.getLink());
+  }
+
+  public List<Journals> getAll() {
+    return jdbcTemplate.query("select * from journals order by make_date", mapper);
   }
 }
