@@ -18,4 +18,8 @@ public class CollaborationsService {
   public List<Collaborations> getAllCategory(String category) {
     return collaborationsDAO.getAllCategory(category);
   }
+
+  public void delete(int id) {
+    collaborationsDAO.delete(id);
+  }
 }

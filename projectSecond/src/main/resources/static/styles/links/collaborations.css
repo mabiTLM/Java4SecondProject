@@ -8,3 +8,7 @@
   font-size: 18px;
   padding-bottom: 30px;
 }
+.item-area-inner {
+  display: inline-block;
+  font-size: 18px;
+}

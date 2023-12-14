@@ -14,7 +14,7 @@
             class="graduate-area"
           >
             <form
-              th:if="${session.isManager} != null"
+              th:if="${session.isLogin != null} and ${session.isManager == 1}"
               action="/current/careerAdd"
               method="post"
             >
@@ -61,7 +61,9 @@
                 >[[*{end.getYear()}+1900]].[[*{end.getMonth()}+1]]</span
               >
               )
-              <div th:if="${session.isManager} != null">
+              <div
+                th:if="${session.isLogin != null} and ${session.isManager == 1}"
+              >
                 <form action="/current/careerDelete" method="post">
                   <input type="hidden" name="id" th:value="*{id}" />
                   <button>삭제</button>
@@ -81,7 +83,7 @@
             class="graduate-area"
           >
             <form
-              th:if="${session.isManager} != null"
+              th:if="${session.isLogin != null} and ${session.isManager == 1}"
               action="/current/careerAdd"
               method="post"
             >
@@ -128,7 +130,9 @@
                 >[[*{end.getYear()}+1900]].[[*{end.getMonth()}+1]]</span
               >
               )
-              <div th:if="${session.isManager} != null">
+              <div
+                th:if="${session.isLogin != null} and ${session.isManager == 1}"
+              >
                 <form action="/current/careerDelete" method="post">
                   <input type="hidden" name="id" th:value="*{id}" />
                   <button>삭제</button>
@@ -148,7 +152,7 @@
             class="graduate-area"
           >
             <form
-              th:if="${session.isManager} != null"
+              th:if="${session.isLogin != null} and ${session.isManager == 1}"
               action="/current/careerAdd"
               method="post"
             >
@@ -195,7 +199,9 @@
                 >[[*{end.getYear()}+1900]].[[*{end.getMonth()}+1]]</span
               >
               )
-              <div th:if="${session.isManager} != null">
+              <div
+                th:if="${session.isLogin != null} and ${session.isManager == 1}"
+              >
                 <form action="/current/careerDelete" method="post">
                   <input type="hidden" name="id" th:value="*{id}" />
                   <button>삭제</button>
@@ -215,7 +221,7 @@
             class="graduate-area"
           >
             <form
-              th:if="${session.isManager} != null"
+              th:if="${session.isLogin != null} and ${session.isManager == 1}"
               action="/current/careerAdd"
               method="post"
             >
@@ -262,7 +268,9 @@
                 >[[*{end.getYear()}+1900]].[[*{end.getMonth()}+1]]</span
               >
               )
-              <div th:if="${session.isManager} != null">
+              <div
+                th:if="${session.isLogin != null} and ${session.isManager == 1}"
+              >
                 <form action="/current/careerDelete" method="post">
                   <input type="hidden" name="id" th:value="*{id}" />
                   <button>삭제</button>
@@ -282,7 +290,7 @@
             class="graduate-area"
           >
             <form
-              th:if="${session.isManager} != null"
+              th:if="${session.isLogin != null} and ${session.isManager == 1}"
               action="/current/careerAdd"
               method="post"
             >
@@ -329,7 +337,9 @@
                 >[[*{end.getYear()}+1900]].[[*{end.getMonth()}+1]]</span
               >
               )
-              <div th:if="${session.isManager} != null">
+              <div
+                th:if="${session.isLogin != null} and ${session.isManager == 1}"
+              >
                 <form action="/current/careerDelete" method="post">
                   <input type="hidden" name="id" th:value="*{id}" />
                   <button>삭제</button>

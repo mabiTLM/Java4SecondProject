@@ -76,7 +76,10 @@
         </div>
       </div>
 
-      <a href="/researchTopics/add" th:if="${session.isManager == 1}">
+      <a
+        href="/researchTopics/add"
+        th:if="${session.isLogin != null} and ${session.isManager == 1}"
+      >
         <button>글쓰기</button>
       </a>
     </div>

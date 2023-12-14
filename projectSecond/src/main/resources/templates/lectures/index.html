@@ -8,7 +8,7 @@
       <form
         action="/lectures/add"
         method="post"
-        th:if="${session.isManager == 1}"
+        th:if="${session.isLogin != null} and ${session.isManager == 1}"
       >
         <input type="text" name="name" placeholder="과목명" />
 

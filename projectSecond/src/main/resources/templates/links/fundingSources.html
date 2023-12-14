@@ -5,15 +5,18 @@
   </head>
   <body>
     <div th:fragment="fundingSourcesFragment" class="container">
-      <div>
-        <div th:each="item:${list}" th:object="${list}" class="item-area">
-          <a th:href="*{link}">
-            <div th:text="*{image}"></div>
+      <div class="out-div">
+        <div th:each="item:${list}" th:object="${item}" class="item-area">
+          <a th:href="@{{link}(link=*{link})}">
+            <div th:utext="*{image}"></div>
           </a>
         </div>
       </div>
 
-      <a href="/links/add">
+      <a
+        href="/links/add"
+        th:if="${session.isLogin != null} and ${session.isManager == 1}"
+      >
         <button>추가</button>
       </a>
     </div>

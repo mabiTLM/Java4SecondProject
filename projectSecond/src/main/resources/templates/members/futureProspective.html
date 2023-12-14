@@ -10,7 +10,10 @@
         th:utext="${future.content}"
         class="future-text"
       ></div>
-      <a href="/future_prospective/add" th:if="${session.isManager == 1}">
+      <a
+        href="/future_prospective/add"
+        th:if="${session.isLogin != null} and ${session.isManager == 1}"
+      >
         <button>글쓰기</button>
       </a>
     </div>

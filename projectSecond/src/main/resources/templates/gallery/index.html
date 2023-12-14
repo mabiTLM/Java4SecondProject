@@ -55,7 +55,10 @@
           </ul>
         </nav>
       </div>
-      <a href="/galleryBoard/add">
+      <a
+        href="/galleryBoard/add"
+        th:if="${session.isLogin != null} and ${session.isManager == 1}"
+      >
         <button>글쓰기</button>
       </a>
     </div>

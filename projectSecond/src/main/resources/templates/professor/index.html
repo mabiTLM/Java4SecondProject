@@ -51,7 +51,7 @@
       <div class="container">
         <div class="sub-title">Education and Professional Career</div>
         <form
-          th:if="${session.isManager} != null"
+          th:if="${session.isLogin != null} and ${session.isManager == 1}"
           action="/careerAdd"
           method="post"
         >
@@ -100,7 +100,7 @@
         <div class="container">
           <div class="sub-title">Honors And Awards</div>
           <form
-            th:if="${session.isManager} != null"
+            th:if="${session.isLogin != null} and ${session.isManager == 1}"
             action="/honorsAndAwardsAdd"
             method="post"
           >

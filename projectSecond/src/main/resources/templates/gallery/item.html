@@ -25,7 +25,10 @@
       <p th:utext="*{content}"></p>
       <hr />
       <div class="d-flex justify-content-end">
-        <form action="/gallery/edit" th:if="${session.isManager == 1}">
+        <form
+          action="/gallery/edit"
+          th:if="${session.isLogin != null} and ${session.isManager == 1}"
+        >
           <button
             th:value="*{id}"
             name="currentPost"
@@ -37,7 +40,7 @@
         <form
           action="/galleryBoard/delete"
           method="post"
-          th:if="${session.isManager == 1}"
+          th:if="${session.isLogin != null} and ${session.isManager == 1}"
         >
           <button
             th:value="*{id}"

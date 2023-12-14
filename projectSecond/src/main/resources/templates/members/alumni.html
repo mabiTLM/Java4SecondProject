@@ -79,7 +79,7 @@
             <form
               action="/alumni/add"
               method="post"
-              th:if="${session.isManager == 1}"
+              th:if="${session.isLogin != null} and ${session.isManager == 1}"
             >
               <input type="hidden" name="memberId" th:value="*{id}" />
 

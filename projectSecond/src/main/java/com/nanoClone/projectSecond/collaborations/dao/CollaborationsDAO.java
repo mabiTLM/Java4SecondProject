@@ -30,4 +30,8 @@ public class CollaborationsDAO {
   public List<Collaborations> getAllCategory(String category) {
     return jdbcTemplate.query("select * from collaborations where category = ?", mapper, category);
   }
+
+  public void delete(int id) {
+    jdbcTemplate.update("delete from collaborations where id = ?", id);
+  }
 }

@@ -45,7 +45,10 @@
           </ul>
         </nav>
       </div>
-      <a href="/instruments/add" th:if="${session.isManager == 1}">
+      <a
+        href="/instruments/add"
+        th:if="${session.isLogin != null} and ${session.isManager == 1}"
+      >
         <button>추가</button>
       </a>
     </div>

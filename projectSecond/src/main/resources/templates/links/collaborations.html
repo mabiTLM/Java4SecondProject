@@ -5,20 +5,64 @@
   </head>
   <body>
     <div th:fragment="collaborationsFragment" class="container">
+      <form
+        action="/collaborations"
+        method="post"
+        th:if="${session.isLogin != null} and ${session.isManager == 1}"
+      >
+        <select name="category" id="">
+          <option value="unist">UNIST</option>
+          <option value="outside">Outside</option>
+        </select>
+        <input name="name" type="text" placeholder="이름" />
+        <input name="university" type="text" placeholder="대학" />
+        <button>추가</button>
+      </form>
+
       <div>
         <div class="sub-title-area">UNIST</div>
-        <div th:each="item:${unistList}" th:object="${item}" class="item-area">
-          [[*{name}]]
+        <div class="item-area">
+          <strong>-</strong>
+          <div
+            th:each="item:${unistList}"
+            th:object="${item}"
+            class="item-area-inner"
+          >
+            [[*{name}]] 교수님
+            <span th:if="*{university}!=''">([[*{university}]])</span>
+            <span th:if="${!itemStat.last}">,</span>
+            <form
+              action="/collaborations/delete"
+              method="post"
+              th:if="${session.isLogin != null} and ${session.isManager == 1}"
+            >
+              <input type="hidden" name="id" th:value="*{id}" />
+              <button>삭제</button>
+            </form>
+          </div>
         </div>
       </div>
       <div>
         <div class="sub-title-area">Outside</div>
-        <div
-          th:each="item:${outsideList}"
-          th:object="${item}"
-          class="item-area"
-        >
-          [[*{name}]]
+        <div class="item-area">
+          <strong>-</strong>
+          <div
+            th:each="item:${outsideList}"
+            th:object="${item}"
+            class="item-area-inner"
+          >
+            [[*{name}]] 교수님
+            <span th:if="*{university}!=''">([[*{university}]])</span>
+            <span th:if="${!itemStat.last}">,</span>
+            <form
+              action="/collaborations/delete"
+              method="post"
+              th:if="${session.isLogin != null} and ${session.isManager == 1}"
+            >
+              <input type="hidden" name="id" th:value="*{id}" />
+              <button>삭제</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
