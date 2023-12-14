@@ -39,4 +39,10 @@ public class JournalsDAO {
     return jdbcTemplate.query("select * from journals order by id desc limit ?, ?", mapper, idx,
         count);
   }
+
+  public List<Journals> getIsSelect(int selected) {
+    return jdbcTemplate.query("select * from journals where selected = ? order by make_date",
+        mapper, selected);
+  }
+
 }

@@ -24,6 +24,9 @@ public class JournalsController {
   public String journalsPage(Model model, @RequestParam Map<String, String> data) {
     int page = data.get("page") != null ? Integer.parseInt(data.get("page")) : 1;
     model.addAttribute("page", page);
+
+    model.addAttribute("journalsList", journalsService.getSelect(page));
+
     model.addAttribute("title", "Journals");
     model.addAttribute("path", "/publications/journals");
     model.addAttribute("content", "journalsFragment");

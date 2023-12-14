@@ -47,3 +47,8 @@
   border-left: 8px solid #003777;
   padding-left: 16px;
 }
+
+.list-area {
+  padding-top: 30px;
+  border-top: 1px dotted #777c81;
+}

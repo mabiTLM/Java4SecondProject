@@ -23,4 +23,7 @@ public class JournalsService {
     return journalsDAO.getAll((page - 1) * count, count);
   }
 
+  public List<Journals> getSelect(int id) {
+    return journalsDAO.getIsSelect(id);
+  }
 }

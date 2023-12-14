@@ -1,4 +1,4 @@
-use mysql
+use mysql;
 create user nano;
 create user nano@localhost identified by '1234';
 create database nano_test;
@@ -7,6 +7,9 @@ grant all privileges on nano_test.* to nano@localhost;
 
 use nano_test;
 
+drop table collaborations;
+drop table links;
+drop table journals;
 drop table gallery_board;
 drop table lectures;
 drop table patents;
