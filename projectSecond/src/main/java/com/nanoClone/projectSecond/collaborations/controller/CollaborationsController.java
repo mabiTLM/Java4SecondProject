@@ -21,9 +21,16 @@ public class CollaborationsController {
     model.addAttribute("contentHead", "collaborationsFragmentHead");
     model.addAttribute("bannerBundle", "Links");
     model.addAttribute("banner", "Collaborations");
-
-    model.addAttribute("unistList", collaborationsService.getAllCategory("unist"));
-    model.addAttribute("outsideList", collaborationsService.getAllCategory("outside"));
+    try {
+      model.addAttribute("unistList", collaborationsService.getAllCategory("unist"));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    try {
+      model.addAttribute("outsideList", collaborationsService.getAllCategory("outside"));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
     return "/basic/layout";
   }
 }
