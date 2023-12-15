@@ -37,9 +37,20 @@ public class NewsBoardDAO {
     return jdbcTemplate.queryForObject("select count(*) from news_board", Integer.class);
   }
 
+  public int getSearchCount(String search) {
+    return jdbcTemplate.queryForObject("select count(*) from news_board where title like ?",
+        Integer.class, "%" + search + "%");
+  }
+
   public List<NewsBoard> getAll(int idx, int count) {
     return jdbcTemplate.query("select * from news_board order by id desc limit ?, ?", mapper, idx,
         count);
+  }
+
+  public List<NewsBoard> getSearch(String search, int idx, int count) {
+    return jdbcTemplate.query(
+        "select * from news_board where title like ? order by id desc limit ?, ?", mapper,
+        "%" + search + "%", idx, count);
   }
 
   public NewsBoard get(int id) {
@@ -55,8 +66,6 @@ public class NewsBoardDAO {
     return jdbcTemplate.queryForObject(
         "select * from news_board where id < ? order by id desc limit 1", mapper, id);
   }
-
-
 
   public void upViews(int id) {
     jdbcTemplate.update("update news_board set views = views+1 where id = ?", id);

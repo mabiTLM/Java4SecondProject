@@ -23,8 +23,16 @@ public class GalleryBoardService {
     return galleryBoardDAO.getAll((page - 1) * count, count);
   }
 
+  public List<GalleryBoard> getAll(String search, int page, int count) {
+    return galleryBoardDAO.getAll(search, (page - 1) * count, count);
+  }
+
   public int getPageCount(int count) {
     return (galleryBoardDAO.getCount() - 1) / count + 1;
+  }
+
+  public int getPageCount(String search, int count) {
+    return (galleryBoardDAO.getCount(search) - 1) / count + 1;
   }
 
   public void upViews(int id) {

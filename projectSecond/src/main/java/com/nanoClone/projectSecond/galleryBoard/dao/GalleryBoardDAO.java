@@ -40,8 +40,19 @@ public class GalleryBoardDAO {
         mapper, idx, count);
   }
 
+  public List<GalleryBoard> getAll(String search, int idx, int count) {
+    return jdbcTemplate.query(
+        "select *, members.name as member_name from gallery_board join members on gallery_board.member_id=members.id where title like ? order by gallery_board.id desc limit ?, ?",
+        mapper, "%" + search + "%", idx, count);
+  }
+
   public int getCount() {
     return jdbcTemplate.queryForObject("select count(*) from gallery_board", Integer.class);
+  }
+
+  public int getCount(String search) {
+    return jdbcTemplate.queryForObject("select count(*) from gallery_board where title like ?",
+        Integer.class, "%" + search + "%");
   }
 
   public void upViews(int id) {

@@ -36,6 +36,30 @@ public class GalleryBoardController {
     return "/basic/layout";
   }
 
+  @GetMapping("/galleryBoard/search")
+  public String galleryBoardSearchPage(Model model, @RequestParam Map<String, String> data,
+      HttpSession session) {
+    int page = data.get("page") != null ? Integer.parseInt(data.get("page")) : 1;
+    model.addAttribute("title", "Gallery");
+    model.addAttribute("path", "/gallery/search");
+    model.addAttribute("content", "gallerySearchFragment");
+    model.addAttribute("contentHead", "gallerySearchFragmentHead");
+    model.addAttribute("bannerBundle", "Gallery");
+    model.addAttribute("banner", "Gallery");
+
+    String tempSearch = "";
+    if (data.get("search") != null) {
+      tempSearch = data.get("search");
+      session.setAttribute("galleryBoardSearch", data.get("search"));
+    } else if (session.getAttribute("galleryBoardSearch") != null) {
+      tempSearch = session.getAttribute("galleryBoardSearch").toString();
+    }
+
+    model.addAttribute("list", galleryBoardService.getAll(tempSearch, page, count));
+    model.addAttribute("pageCount", galleryBoardService.getPageCount(tempSearch, count));
+    return "/basic/layout";
+  }
+
   @GetMapping("/galleryBoard/add")
   public String galleryBoardAddPage(Model model, @RequestParam Map<String, String> data) {
     model.addAttribute("title", "Gallery");

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="galleryFragmentHead">
+  <head th:fragment="gallerySearchFragmentHead">
     <link rel="stylesheet" href="/styles/gallery/index.css" />
   </head>
   <body>
-    <div th:fragment="galleryFragment" class="container">
+    <div th:fragment="gallerySearchFragment" class="container">
       <form action="/galleryBoard/search" class="gallery-search-bar">
         <input type="text" name="search" />
         <button>검색</button>
@@ -28,7 +28,7 @@
             <li class="page-item" th:if="${nowPage}>1">
               <a
                 class="page-link"
-                th:href="@{/galleryBoard(page=${nowPage-1})}"
+                th:href="@{/galleryBoard/search(page=${nowPage-1})}"
                 aria-label="Previous"
               >
                 <span aria-hidden="true">&laquo;</span>
@@ -38,7 +38,9 @@
               th:each="page :${#numbers.sequence(1,pageCount)}"
               class="page-item"
             >
-              <a class="page-link" th:href="@{/galleryBoard(page=${page})}"
+              <a
+                class="page-link"
+                th:href="@{/galleryBoard/search(page=${page})}"
                 >[[${page}]]</a
               >
             </li>
@@ -46,7 +48,7 @@
             <li class="page-item" th:if="${nowPage} != ${pageCount}">
               <a
                 class="page-link"
-                th:href="@{/galleryBoard(page=${nowPage}+1)}"
+                th:href="@{/galleryBoard/search(page=${nowPage}+1)}"
                 aria-label="Next"
               >
                 <span aria-hidden="true">&raquo;</span>

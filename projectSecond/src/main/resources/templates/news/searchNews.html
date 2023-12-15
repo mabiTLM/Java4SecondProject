@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head th:fragment="newsFragmentHead">
+  <head th:fragment="newsSearchFragmentHead">
     <link rel="stylesheet" href="/styles/news/index.css" />
   </head>
   <body>
-    <div th:fragment="newsFragment" class="container">
+    <div th:fragment="newsSearchFragment" class="container">
       <form action="/news/search" class="news-search-bar">
         <input type="text" name="search" placeholder="제목" />
         <button>검색</button>
@@ -46,7 +46,7 @@
             <li class="page-item" th:if="${nowPage}>1">
               <a
                 class="page-link"
-                th:href="@{/news(page=${nowPage-1})}"
+                th:href="@{/news/search(page=${nowPage-1})}"
                 aria-label="Previous"
               >
                 <span aria-hidden="true">&laquo;</span>
@@ -56,7 +56,7 @@
               th:each="page :${#numbers.sequence(1,pageCount)}"
               class="page-item"
             >
-              <a class="page-link" th:href="@{/news(page=${page})}"
+              <a class="page-link" th:href="@{/news/search(page=${page})}"
                 >[[${page}]]</a
               >
             </li>
@@ -64,7 +64,7 @@
             <li class="page-item" th:if="${nowPage} != ${pageCount}">
               <a
                 class="page-link"
-                th:href="@{/news(page=${nowPage}+1)}"
+                th:href="@{/news/search(page=${nowPage}+1)}"
                 aria-label="Next"
               >
                 <span aria-hidden="true">&raquo;</span>

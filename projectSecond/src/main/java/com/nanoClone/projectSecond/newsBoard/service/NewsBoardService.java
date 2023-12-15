@@ -19,6 +19,10 @@ public class NewsBoardService {
     return newsBoardDAO.getAll((page - 1) * count, count);
   }
 
+  public List<NewsBoard> getSearch(String search, int page, int count) {
+    return newsBoardDAO.getSearch(search, (page - 1) * count, count);
+  }
+
   public NewsBoard get(int newsBoardId) {
     return newsBoardDAO.get(newsBoardId);
   }
@@ -33,6 +37,10 @@ public class NewsBoardService {
 
   public int getPageCount(int count) {
     return (newsBoardDAO.getCount() - 1) / count + 1;
+  }
+
+  public int getSearchCount(String search, int count) {
+    return (newsBoardDAO.getSearchCount(search) - 1) / count + 1;
   }
 
   public void upViews(int id) {

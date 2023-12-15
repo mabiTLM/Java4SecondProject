@@ -41,6 +41,29 @@ public class NewsBoardController {
     return "/basic/layout";
   }
 
+  @GetMapping("/news/search")
+  public String newsSearchPage(Model model, @RequestParam Map<String, String> data,
+      HttpSession session) {
+    int page = data.get("page") != null ? Integer.parseInt(data.get("page")) : 1;
+    String tempSearch = "";
+
+    if (data.get("search") != null) {
+      tempSearch = data.get("search");
+      session.setAttribute("newsSearch", data.get("search"));
+    } else if (session.getAttribute("newsSearch") != null) {
+      tempSearch = session.getAttribute("newsSearch").toString();
+    }
+    model.addAttribute("title", "News");
+    model.addAttribute("path", "/news/searchNews");
+    model.addAttribute("content", "newsSearchFragment");
+    model.addAttribute("contentHead", "newsSearchFragmentHead");
+    model.addAttribute("bannerBundle", "News");
+    model.addAttribute("banner", "News");
+    model.addAttribute("list", newsBoardService.getSearch(tempSearch, page, count));
+    model.addAttribute("pageCount", newsBoardService.getSearchCount(tempSearch, count));
+    return "/basic/layout";
+  }
+
   @GetMapping("/news/{newsBoardId}")
   public String itemPage(Model model, @PathVariable("newsBoardId") int boardId) {
     newsBoardService.upViews(boardId);
