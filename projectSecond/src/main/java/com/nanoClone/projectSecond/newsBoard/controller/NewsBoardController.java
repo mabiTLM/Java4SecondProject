@@ -55,13 +55,13 @@ public class NewsBoardController {
     model.addAttribute("newsBoard", newsboard);
 
     try {
-      NewsBoard previousBoard = newsBoardService.get(boardId - 1);
+      NewsBoard previousBoard = newsBoardService.getPrevious(boardId);
       model.addAttribute("previousItem", previousBoard);
     } catch (Exception e) {
       System.out.println("최초글");
     }
     try {
-      NewsBoard nextBoard = newsBoardService.get(boardId + 1);
+      NewsBoard nextBoard = newsBoardService.getNext(boardId);
       model.addAttribute("nextItem", nextBoard);
     } catch (Exception e) {
       System.out.println("마지막글");

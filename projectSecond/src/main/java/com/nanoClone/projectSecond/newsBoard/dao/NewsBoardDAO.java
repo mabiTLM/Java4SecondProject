@@ -46,6 +46,18 @@ public class NewsBoardDAO {
     return jdbcTemplate.queryForObject("select * from news_board where id = ?", mapper, id);
   }
 
+  public NewsBoard getNext(int id) {
+    return jdbcTemplate.queryForObject("select * from news_board where id > ? order by id limit 1",
+        mapper, id);
+  }
+
+  public NewsBoard getPrevious(int id) {
+    return jdbcTemplate.queryForObject(
+        "select * from news_board where id < ? order by id desc limit 1", mapper, id);
+  }
+
+
+
   public void upViews(int id) {
     jdbcTemplate.update("update news_board set views = views+1 where id = ?", id);
   }

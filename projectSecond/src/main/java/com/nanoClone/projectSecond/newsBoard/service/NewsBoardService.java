@@ -23,6 +23,14 @@ public class NewsBoardService {
     return newsBoardDAO.get(newsBoardId);
   }
 
+  public NewsBoard getNext(int newsBoardId) {
+    return newsBoardDAO.getNext(newsBoardId);
+  }
+
+  public NewsBoard getPrevious(int newsBoardId) {
+    return newsBoardDAO.getPrevious(newsBoardId);
+  }
+
   public int getPageCount(int count) {
     return (newsBoardDAO.getCount() - 1) / count + 1;
   }
