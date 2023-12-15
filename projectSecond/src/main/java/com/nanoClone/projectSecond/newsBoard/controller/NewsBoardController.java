@@ -168,7 +168,7 @@ public class NewsBoardController {
       String ext = originName.substring(originName.indexOf("."));
       String randomName = UUID.randomUUID() + ext;
       String savePath =
-          "C:\\Users\\KGA\\git\\Java4SecondProject\\projectSecond\\src\\main\\resources\\static\\images\\upload\\"
+          "/home/tomcat/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/images/upload/"
               + randomName;
       String uploadUrl = "/images/upload/" + randomName;
       File file = new File(savePath);

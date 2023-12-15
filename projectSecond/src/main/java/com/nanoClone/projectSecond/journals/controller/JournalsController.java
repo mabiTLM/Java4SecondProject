@@ -62,8 +62,11 @@ public class JournalsController {
     String[] tempNames = originName.split("[.]");
     String ext = originName.substring(originName.indexOf("."));
     String randomName = UUID.randomUUID() + ext;
-    String savePath = System.getProperty("user.dir")
-        + "\\src\\main\\resources\\static\\images\\journals\\upload\\" + randomName;
+    String savePath =
+        "/home/tomcat/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/images/journals/upload/"
+            + randomName;
+    // String savePath = System.getProperty("user.dir")
+    // + "\\src\\main\\resources\\static\\images\\journals\\upload\\" + randomName;
     String uploadUrl = "/images/journals/upload/" + randomName;
 
     File saveFile = new File(savePath);

@@ -137,8 +137,9 @@ public class MembersController {
       String[] tempImageNames = originImageName.split("[.]");
       String extImage = originImageName.substring(originImageName.indexOf("."));
       String randomImageName = UUID.randomUUID() + extImage;
-      String saveImagePath = System.getProperty("user.dir")
-          + "\\src\\main\\resources\\static\\images\\member\\upload\\" + randomImageName;
+      String saveImagePath =
+          "/home/tomcat/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/images/member/upload/"
+              + randomImageName;
       String uploadImageUrl = "/images/member/upload/" + randomImageName;
       File saveImageFile = new File(saveImagePath);
       try {

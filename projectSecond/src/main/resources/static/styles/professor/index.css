@@ -4,6 +4,9 @@
 .professor-choice {
   border: 1px solid;
 }
+.image-area-inner {
+  width: 100%;
+}
 
 .professor-info-area {
   font-weight: 400;
