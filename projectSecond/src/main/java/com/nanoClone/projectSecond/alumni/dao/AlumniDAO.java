@@ -23,20 +23,20 @@ public class AlumniDAO {
   };
 
   public void add(Alumni alumni) {
-    jdbcTemplate.update("insert into Alumni (member_id, content, start, end) values (?,?,?,?)",
+    jdbcTemplate.update("insert into alumni (member_id, content, start, end) values (?,?,?,?)",
         alumni.getMemberId(), alumni.getContent(), alumni.getStart(), alumni.getEnd());
   }
 
   public Alumni get(int meberId) {
-    return jdbcTemplate.queryForObject("select * from Alumni where member_id = ?", mapper, meberId);
+    return jdbcTemplate.queryForObject("select * from alumni where member_id = ?", mapper, meberId);
   }
 
   public List<Alumni> getAll() {
-    return jdbcTemplate.query("select * from Alumni", mapper);
+    return jdbcTemplate.query("select * from alumni", mapper);
   }
 
   public void update(Alumni alumni) {
-    jdbcTemplate.update("update Alumni set content=?, start=?, end=? where member_id = ?",
+    jdbcTemplate.update("update alumni set content=?, start=?, end=? where member_id = ?",
         alumni.getContent(), alumni.getStart(), alumni.getEnd(), alumni.getMemberId());
   }
 }
