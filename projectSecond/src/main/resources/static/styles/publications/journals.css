@@ -34,6 +34,10 @@
 
 .year-area-inner {
   padding-right: 30px;
+  cursor: pointer;
+}
+.year-area-inner:hover {
+  color: blue;
 }
 
 .sub-year-area {
@@ -51,4 +55,86 @@
 .list-area {
   padding-top: 30px;
   border-top: 1px dotted #777c81;
+}
+
+.list-index-area {
+  display: inline-block;
+  width: 69px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 10px;
+  text-indent: initial;
+  text-align: center;
+  background: #003777;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.list-title-area {
+  text-indent: -80px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #003777;
+}
+.maker-area {
+  padding-left: 80px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.book-info-area {
+  padding: 5px 0 5px 80px;
+  font-size: 16px;
+  color: #f00;
+}
+.book-name-area {
+  font-style: italic;
+  font-weight: 700;
+}
+.book-volume-area {
+  font-style: italic;
+}
+
+.book-link-area {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 73px;
+  height: 28px;
+  line-height: 28px;
+  margin-left: 5px;
+  padding-left: 33px;
+  text-indent: initial;
+  background: #777c81 url("/images/journals/linkIcon.png") no-repeat 12px 7px /
+    14px 14px;
+  border-radius: 37px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.book-file-area {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 66px;
+  height: 28px;
+  line-height: 28px;
+  margin-left: 5px;
+  padding-left: 27px;
+  text-indent: initial;
+  background: #db3b2e url("/images/journals/pdfIcon.png") no-repeat 11px 8px /
+    11px 13px;
+  border-radius: 37px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.if-area {
+  padding-left: 80px;
+  font-size: 16px;
+}
+
+.book-img-area {
+  text-align: center;
+  max-width: 100%;
 }

@@ -38,18 +38,15 @@
       </div>
       <a href="/journals/add"><button>추가</button></a>
       <div class="year-area d-flex justify-content-center">
-        <div>
-          <div class="year-area-inner">2023</div>
-        </div>
+        <div class="year-area-inner">2023</div>
         <div class="year-area-inner">2022~2016</div>
         <div class="year-area-inner">2015~2009</div>
         <div class="year-area-inner">2008~</div>
       </div>
-      <div>
+      <div class="sub-year-menu-area">
         <div class="sub-year-area">
           <div class="sub-year-area-inner">Year 2023</div>
         </div>
-
         <div
           th:each="list:${journalsList}"
           th:object="${list}"
@@ -57,17 +54,128 @@
           class="list-area"
         >
           <div>
-            <span th:text="*{id}" class="index-area"></span
+            <span th:text="${listStat.count}" class="list-index-area"></span
             ><span th:text="*{title}" class="list-title-area"></span>
           </div>
-          <div th:text="*{maker}"></div>
-          <div>
-            <span th:text="*{bookName}"></span>
-            ,<span th:text="*{volume}"></span> ,<span th:text="*{page}"></span>
+          <div th:text="*{maker}" class="maker-area"></div>
+          <div class="book-info-area">
+            <span th:text="*{bookName}" class="book-name-area"></span>
+            <span th:if="*{volume}!=null" class="book-volume-area"
+              >, [[*{volume}]]</span
+            >
+            <span th:if="*{page}!=null">, [[*{page}]]</span>
+            <a th:href="@{*{link}}">
+              <span class="book-link-area">Link</span>
+            </a>
+            <a th:href="@{*{file}}">
+              <span class="book-file-area">PDF</span>
+            </a>
           </div>
-          <div>IF=[[*{impactFactor}]]</div>
+          <div class="if-area">IF=[[*{impactFactor}]]</div>
+          <div class="book-img-area"><img th:src="@{*{image}}" alt="" /></div>
         </div>
       </div>
+
+      <div class="sub-year-menu-area">
+        <div class="sub-year-area">
+          <div class="sub-year-area-inner">Year 2022 ~ 2016</div>
+        </div>
+        <div
+          th:each="list:${journalsList}"
+          th:object="${list}"
+          th:if="${list.makeDate.getYear()}+1900 lt 2023 and ${list.makeDate.getYear()}+1900 >= 2016"
+          class="list-area"
+        >
+          <div>
+            <span th:text="${listStat.count}" class="list-index-area"></span
+            ><span th:text="*{title}" class="list-title-area"></span>
+          </div>
+          <div th:text="*{maker}" class="maker-area"></div>
+          <div class="book-info-area">
+            <span th:text="*{bookName}" class="book-name-area"></span>
+            <span th:if="*{volume}!=null" class="book-volume-area"
+              >, [[*{volume}]]</span
+            >
+            <span th:if="*{page}!=null">, [[*{page}]]</span>
+            <a th:href="@{*{link}}">
+              <span class="book-link-area">Link</span>
+            </a>
+            <a th:href="@{*{file}}">
+              <span class="book-file-area">PDF</span>
+            </a>
+          </div>
+          <div class="if-area">IF=[[*{impactFactor}]]</div>
+          <div class="book-img-area"><img th:src="@{*{image}}" alt="" /></div>
+        </div>
+      </div>
+
+      <div class="sub-year-menu-area">
+        <div class="sub-year-area">
+          <div class="sub-year-area-inner">Year 2023</div>
+        </div>
+        <div
+          th:each="list:${journalsList}"
+          th:object="${list}"
+          th:if="${list.makeDate.getYear()}+1900 lt 2016 and ${list.makeDate.getYear()}+1900 >= 2009"
+          class="list-area"
+        >
+          <div>
+            <span th:text="${listStat.count}" class="list-index-area"></span
+            ><span th:text="*{title}" class="list-title-area"></span>
+          </div>
+          <div th:text="*{maker}" class="maker-area"></div>
+          <div class="book-info-area">
+            <span th:text="*{bookName}" class="book-name-area"></span>
+            <span th:if="*{volume}!=null" class="book-volume-area"
+              >, [[*{volume}]]</span
+            >
+            <span th:if="*{page}!=null">, [[*{page}]]</span>
+            <a th:href="@{*{link}}">
+              <span class="book-link-area">Link</span>
+            </a>
+            <a th:href="@{*{file}}">
+              <span class="book-file-area">PDF</span>
+            </a>
+          </div>
+          <div class="if-area">IF=[[*{impactFactor}]]</div>
+          <div class="book-img-area"><img th:src="@{*{image}}" alt="" /></div>
+        </div>
+      </div>
+
+      <div class="sub-year-menu-area">
+        <div class="sub-year-area">
+          <div class="sub-year-area-inner">Year 2023</div>
+        </div>
+        <div
+          th:each="list:${journalsList}"
+          th:object="${list}"
+          th:if="${list.makeDate.getYear()}+1900 lt 2009"
+          class="list-area"
+        >
+          <div>
+            <span th:text="${listStat.count}" class="list-index-area"></span
+            ><span th:text="*{title}" class="list-title-area"></span>
+          </div>
+          <div th:text="*{maker}" class="maker-area"></div>
+          <div class="book-info-area">
+            <span th:text="*{bookName}" class="book-name-area"></span>
+            <span th:if="*{volume}!=null" class="book-volume-area"
+              >, [[*{volume}]]</span
+            >
+            <span th:if="*{page}!=null">, [[*{page}]]</span>
+            <a th:href="@{*{link}}">
+              <span class="book-link-area">Link</span>
+            </a>
+            <a th:href="@{*{file}}">
+              <span class="book-file-area">PDF</span>
+            </a>
+          </div>
+          <div class="if-area">IF=[[*{impactFactor}]]</div>
+          <div class="book-img-area"><img th:src="@{*{image}}" alt="" /></div>
+        </div>
+      </div>
+
+      <script src="/scripts/publications/journals.js"></script>
     </div>
   </body>
 </html>
